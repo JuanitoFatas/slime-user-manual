@@ -132,7 +132,7 @@ Slime 广泛地支持多种操作系统和 Lisp 实现。Slime 可以在类 Unix
 
 ### 2.2 下载 Slime
 
-你可以选择使用发行版本的 Slime 或者直接通过 CVS 仓库使用 Slime。你可以从我们的网站下载最新发布版本：[[http://www.common-lisp.net/project/slime/]]。
+你可以选择使用发行版本的 Slime 或者直接通过 CVS 仓库使用 Slime。你可以从我们的网站下载最新发布版本：http://www.common-lisp.net/project/slime/。
 
 我们建议加入了 slime-dev 邮件列表的用户使用 CVS 版本的代码。
 
