@@ -6,15 +6,15 @@
 
 * [2. 开始](#-2)
     * [2.1 支持平台](#21-)
-    * [2.2 下载Slime](#22--slime)
-        * [2.2.1 从CVS下载](#221--cvs-)
-        * [2.2.2 使用CVS](#222--cvs)
+    * [2.2 下载 Slime](#22--slime)
+        * [2.2.1 从 CVS 下载](#221--cvs-)
+        * [2.2.2 使用 CVS](#222--cvs)
     * [2.3 安装](#23-)
-    * [2.4 启动Slime](#24--slime)
+    * [2.4 启动 Slime](#24--slime)
     * [2.5 调整设置](#25-)
         * [2.5.1 自动加载](#251-)
-        * [2.5.2 多种Lisp](#252--lisp)
-        * [2.5.3 更快地加载Swank](#253--swank)
+        * [2.5.2 多种 Lisp](#252--lisp)
+        * [2.5.3 更快地加载 Swank](#253--swank)
 
 * [3. 使用 Slime 模式](#-slime-)
     * [3.1 用户介面须知](#31-)
@@ -31,7 +31,7 @@
         * [3.7.1 XREF 缓冲区命令](#371-xref)
     * [3.8 宏扩展命令](#38-)
     * [3.9 分解命令](#39-)
-    * [3.10 中止/恢复命令](#310-)
+    * [3.10 中止 / 恢复命令](#310-)
     * [3.11 检查命令](#311-)
     * [3.12 分析命令](#312-)
     * [3.13 遮盖命令](#313--1)
@@ -68,10 +68,10 @@
 * [8. 扩展包](#-6)
     * [8.1 加载扩展包](#81)
     * [8.2 REPL：“顶层环境”](#82-repl)
-        * [8.2.1 REPL命令](#821-repl)
+        * [8.2.1 REPL 命令](#821-repl)
         * [8.2.2 输入引导](#822-)
         * [8.2.3 快捷命令](#823-)
-    * [8.3 多REPL](#83-repl)
+    * [8.3 多 REPL](#83-repl)
     * [8.4 inferior-slime-mode](#84-inferior-slime-mode)
     * [8.5 混合补全](#85-)
     * [8.6 模糊补全](#86-)
@@ -113,7 +113,7 @@ Slime 由两部分组成：用 Emacs Lisp 写的用户界面，和用 Common Lis
 
 ### 2.1 支持平台
 
-Slime 广泛地支持多种操作系统和 Lisp 实现。Slime 可以在类 Unix 系统、Mac OSX 和 Microsoft Windows 上运行。GNU Emacs 21、22 和 23 以及 XEmacs 21 都可以运行Slime。
+Slime 广泛地支持多种操作系统和 Lisp 实现。Slime 可以在类 Unix 系统、Mac OSX 和 Microsoft Windows 上运行。GNU Emacs 21、22 和 23 以及 XEmacs 21 都可以运行 Slime。
 
 粗略地根据支持的良好程度来排序的话，所有支持的 Lisp 实现为：
 
@@ -190,7 +190,7 @@ cvs diff -rHEAD ChangeLog      # or: -rFAIRLY-STABLE
 
 ## 2.4 启动 Slime
 
-Emacs命令 M-x slime 可以启动 Slime。它使用 inferior-lisp 包来启动一个 Lisp 进程，加载并启动 Lisp 端服务器（叫做“Swank”），然后在 Emacs 和 Lisp 之间建立一个 socket 连接。最后会生成一个 REPL 缓冲区，你可以在这里输入 Lisp 表达式并求值。
+Emacs 命令 M-x slime 可以启动 Slime。它使用 inferior-lisp 包来启动一个 Lisp 进程，加载并启动 Lisp 端服务器（叫做“Swank”），然后在 Emacs 和 Lisp 之间建立一个 socket 连接。最后会生成一个 REPL 缓冲区，你可以在这里输入 Lisp 表达式并求值。
 
 于是现在 Slime 启动完成，你可以开始使用了。
 
@@ -213,11 +213,11 @@ Emacs命令 M-x slime 可以启动 Slime。它使用 inferior-lisp 包来启动�
 (slime-setup)
 ```
 
-跟基本配置相比，差别只在这一行(require 'slime-autoloads)。它告诉 Emacs 当 M-x slime 或者 M-x slime-connect 命令第一次执行之后 Slime 的其它部分会被自动加载。
+跟基本配置相比，差别只在这一行 (require 'slime-autoloads)。它告诉 Emacs 当 M-x slime 或者 M-x slime-connect 命令第一次执行之后 Slime 的其它部分会被自动加载。
 
 ### 2.5.2 多种 Lisp
 
-默认情况下，M-x slime 命令启动的程序是由 inferior-lisp-program 指定的。如果你在执行 M-x slime命令时添加了一个前缀参数，Emacs 会启动参数中指定的程序。如果你需要经常使用它或者命令的名称太长，那么在 .emacs 文件里设置 slime-lisp-implementations 变量则较为方便。例如，在这里我们定义了两个程序：
+默认情况下，M-x slime 命令启动的程序是由 inferior-lisp-program 指定的。如果你在执行 M-x slime 命令时添加了一个前缀参数，Emacs 会启动参数中指定的程序。如果你需要经常使用它或者命令的名称太长，那么在 .emacs 文件里设置 slime-lisp-implementations 变量则较为方便。例如，在这里我们定义了两个程序：
 
 ```emacs-lisp
 (setq slime-lisp-implementations
@@ -253,7 +253,7 @@ Emacs命令 M-x slime 可以启动 Slime。它使用 inferior-lisp 包来启动�
 
 ### 2.5.3 更快地加载 Swank
 
-对于SBCL，我们建议你新建一个有 socket 支持和 POSIX 绑定的核心配置文件，因为这些模块加载起来很耗时。为了新建一个这样的核心，执行以下的命令：
+对于 SBCL，我们建议你新建一个有 socket 支持和 POSIX 绑定的核心配置文件，因为这些模块加载起来很耗时。为了新建一个这样的核心，执行以下的命令：
 
 ```sh
 shell$ sbcl
@@ -288,35 +288,35 @@ shell$ sbcl
 
 # 三、使用 Slime 模式
 
-Slime的所有命令都通过slime-mode提供。它是一个与Emacs的lisp-mode配合使用的minor-mode。本章描述slime-mode及其相关事项。
+Slime 的所有命令都通过 slime-mode 提供。它是一个与 Emacs 的 lisp-mode 配合使用的 minor-mode。本章描述 slime-mode 及其相关事项。
 
 ## 3.1 用户介面须知
 
-要方便地使用Slime，了解一些“全局的”用户界面特性是十分重要的。这一部分描述了最为重要的原则。
+要方便地使用 Slime，了解一些“全局的”用户界面特性是十分重要的。这一部分描述了最为重要的原则。
 
 ### 3.1.1 临时缓冲区
 
-某些Slime命令会创建临时缓冲区来显示结果。虽然这些缓冲区有它们自己的为了特定目的而使用的major-mode，但某些特定的约定是通用的。
+某些 Slime 命令会创建临时缓冲区来显示结果。虽然这些缓冲区有它们自己的为了特定目的而使用的 major-mode，但某些特定的约定是通用的。
 
-可以通过按q键来关闭临时缓冲区。此操作会关闭缓冲区并且回复缓冲区显示之前的窗口配置。临时缓冲区也可以通过一般的命令例如kill-buffer来关闭，这样的话之前的窗口配置就不会被恢复。
+可以通过按 q 键来关闭临时缓冲区。此操作会关闭缓冲区并且回复缓冲区显示之前的窗口配置。临时缓冲区也可以通过一般的命令例如 kill-buffer 来关闭，这样的话之前的窗口配置就不会被恢复。
 
-按RET键被认为是“做最明显的有用的事情”。例如，在apropos缓冲区此操作会打印出当前光标处的符号的详细描述，而在XREF缓冲区此操作会显示当前光标处的索引的源代码。这样的行为是效仿Emacs的显示相关内容、补全结果等的缓冲区。
+按 RET 键被认为是“做最明显的有用的事情”。例如，在 apropos 缓冲区此操作会打印出当前光标处的符号的详细描述，而在 XREF 缓冲区此操作会显示当前光标处的索引的源代码。这样的行为是效仿 Emacs 的显示相关内容、补全结果等的缓冲区。
 
-含有Lisp符号的临时缓冲区会使用slime-mode来补充它自己的特定的模式。这样就可以使用一般的Slime命令，例如描述符号、查找函数定义等等。
+含有 Lisp 符号的临时缓冲区会使用 slime-mode 来补充它自己的特定的模式。这样就可以使用一般的 Slime 命令，例如描述符号、查找函数定义等等。
 
-对这些“描述性的”缓冲区的初始聚焦由变量slime-description-autofocus确定。如果它是nil（默认的），这些描述性缓冲区不会自动聚焦，反之则会。
+对这些“描述性的”缓冲区的初始聚焦由变量 slime-description-autofocus 确定。如果它是 nil（默认的），这些描述性缓冲区不会自动聚焦，反之则会。
 
 ### 3.1.2 `*inferior-lisp*`缓冲区
 
-Slime在内部使用comint包来启动Lisp进程。这会产生一些用户可见的结果，有些是好的，另一些则不是。为了避免产生疑惑，理解其交互特性是很有用的。
+Slime 在内部使用 comint 包来启动 Lisp 进程。这会产生一些用户可见的结果，有些是好的，另一些则不是。为了避免产生疑惑，理解其交互特性是很有用的。
 
-*inferior-lisp*缓冲区包含有Lisp进程自己的top-level。这个与Lisp的直接连接对错误排查很有用，并且使用inferior-slime-mode可以达到某种程度上的Slime集成。许多人选择加载更好的集成模块SLIME REPL包（见8.2 REPL）而无视*inferior-lisp*缓冲区。（见8.1 加载扩展包 获得更多关于启动REPL的信息。）
+*inferior-lisp* 缓冲区包含有 Lisp 进程自己的 top-level。这个与 Lisp 的直接连接对错误排查很有用，并且使用 inferior-slime-mode 可以达到某种程度上的 Slime 集成。许多人选择加载更好的集成模块 SLIME REPL 包（见 8.2 REPL）而无视 *inferior-lisp* 缓冲区。（见 8.1 加载扩展包 获得更多关于启动 REPL 的信息。）
 
 ### 3.1.3 多线程
 
-如果Lisp支持多线程，对于每个请求Slime会生成一个新的线程，例如，C-x C-e会创建一个新线程来对表达式求值。但是对于从REPL来的请求则是一个例外：所有在REPL缓冲区里输入的命令都会在一个专用的REPL线程里求值。
+如果 Lisp 支持多线程，对于每个请求 Slime 会生成一个新的线程，例如，C-x C-e 会创建一个新线程来对表达式求值。但是对于从 REPL 来的请求则是一个例外：所有在 REPL 缓冲区里输入的命令都会在一个专用的 REPL 线程里求值。
 
-多线程和特殊变量会导致一些复杂性。非全局的特殊绑定是在本地线程里的，也就是说，在一个线程里改变一个由let绑定的特殊变量的值不会影响到其它线程里相同名字的变量的值。这增加了改变新线程的打印和读取行为的困难程度。变量swank:*default-worker-thread-bindings*就是为了应付这种情况的：不需要改变一个变量的全局的值，而是增加swank:*default-worker-thread-bindings*的绑定，例如，使用下面的代码，新的线程会默认将浮点值读取为double。
+多线程和特殊变量会导致一些复杂性。非全局的特殊绑定是在本地线程里的，也就是说，在一个线程里改变一个由 let 绑定的特殊变量的值不会影响到其它线程里相同名字的变量的值。这增加了改变新线程的打印和读取行为的困难程度。变量 swank:*default-worker-thread-bindings* 就是为了应付这种情况的：不需要改变一个变量的全局的值，而是增加 swank:*default-worker-thread-bindings* 的绑定，例如，使用下面的代码，新的线程会默认将浮点值读取为 double。
 
 ```emacs-lisp
 (push '(*read-default-float-format# . double-float)
@@ -325,13 +325,13 @@ Slime在内部使用comint包来启动Lisp进程。这会产生一些用户可�
 
 ### 3.1.4 键绑定
 
-总体上我们会让我们的键绑定跟Emacs的键绑定配合良好。我们也使用了我们自己的某种不太寻常的约定：当键入一个三次按键的命令时，最后一次按键可以按Control也可以不按。例如，slime-describe-symbol命令的键绑定是C-c C-d d，但是按C-c C-d C-d也是同样的。我们将两种方式都绑定了，因为有些人喜欢三次按键都按着Control键，而有些人则不是。并且有两次按键作为前缀，我们不怕键不够用。
+总体上我们会让我们的键绑定跟 Emacs 的键绑定配合良好。我们也使用了我们自己的某种不太寻常的约定：当键入一个三次按键的命令时，最后一次按键可以按 Control 也可以不按。例如，slime-describe-symbol 命令的键绑定是 C-c C-d d，但是按 C-c C-d C-d 也是同样的。我们将两种方式都绑定了，因为有些人喜欢三次按键都按着 Control 键，而有些人则不是。并且有两次按键作为前缀，我们不怕键不够用。
 
-这条规则只有一个例外，希望不要让你中招。我们从来不在任何命令里绑定C-h键，所以C-c C-d C-h跟C-c C-d h做的事情是不一样的。这是因为Emacs内建的默认情况是，输入一个前缀，然后按C-h，会显示处所有以该前缀开始的键绑定。所以C-c C-d C-h命令实际上会显示出所有的文档命令。这个特性太有用了所以我们不会替换它！
+这条规则只有一个例外，希望不要让你中招。我们从来不在任何命令里绑定 C-h 键，所以 C-c C-d C-h 跟 C-c C-d h 做的事情是不一样的。这是因为 Emacs 内建的默认情况是，输入一个前缀，然后按 C-h，会显示处所有以该前缀开始的键绑定。所以 C-c C-d C-h 命令实际上会显示出所有的文档命令。这个特性太有用了所以我们不会替换它！
 
-“你是故意破坏Emacs超级牛逼的在线帮助机制吗？上帝都会震怒的！”
+“你是故意破坏 Emacs 超级牛逼的在线帮助机制吗？上帝都会震怒的！”
 
-此建议十分有用。Emacs的在线帮助机制是你最快捷、最完整和最新的关于键绑定的信息来源。它们是你的朋友：
+此建议十分有用。Emacs 的在线帮助机制是你最快捷、最完整和最新的关于键绑定的信息来源。它们是你的朋友：
 
 - C-h k <key> 或者 M-x describe-key <key>
 
@@ -343,40 +343,40 @@ Slime在内部使用comint包来启动Lisp进程。这会产生一些用户可�
 
 - C-h m 或 describe-mode
 
-  显示所有当前缓冲区可用的major-mode的命令，然后是所有的minor-mode的命令。
+  显示所有当前缓冲区可用的 major-mode 的命令，然后是所有的 minor-mode 的命令。
 
 - C-h l 或 view-lossage
 
   按顺序显示出你刚刚按了的所有按键的序列。
 
-注意：在本文档里C-h指定的意思是一个“典型键绑定”（canonical key），它可能是Ctrl-h或者是F1。或者是普通情况下你的.emacs文件里配置的help-command函数的绑定。下面是一种情形：
+注意：在本文档里 C-h 指定的意思是一个“典型键绑定”（canonical key），它可能是 Ctrl-h 或者是 F1。或者是普通情况下你的.emacs 文件里配置的 help-command 函数的绑定。下面是一种情形：
 
 ```emacs-lisp
 (global-set-key [f1]   'help-command)
 (global-set-key "\C-h" 'delete-backward-char)
 ```
 
-在这种情况下，在本文档中任何地方你看到的C-h你都可以用F1来代替。
+在这种情况下，在本文档中任何地方你看到的 C-h 你都可以用 F1 来代替。
 
-你可以像这样用global-set-key函数在你的~/.emacs文件里全局地更改默认的键绑定：
+你可以像这样用 global-set-key 函数在你的~/.emacs 文件里全局地更改默认的键绑定：
 
 ```emacs-lisp
 (global-set-key "\C-c s" 'slime-selector)
 ```
 
-这会绑定slime-select函数到C-c s。
+这会绑定 slime-select 函数到 C-c s。
 
-或者，如果你只是想在特定的slime模式下新建或改变键绑定，你可以像这样在你的~/.emacs文件里使用define-key函数：
+或者，如果你只是想在特定的 slime 模式下新建或改变键绑定，你可以像这样在你的~/.emacs 文件里使用 define-key 函数：
 
 ```emacs-lisp
 (define-key slime-repl-mode-map (kbd "C-c ;") 'slime-insert-balanced-comments)
 ```
 
-这会在REPL缓冲区里绑定slime-insert-balanced-comments函数到C-c ;键绑定。
+这会在 REPL 缓冲区里绑定 slime-insert-balanced-comments 函数到 C-c ; 键绑定。
 
 ## 3.2 求值命令
 
-这些命令每一个都以不同的方式来对一个Common Lisp表达式求值。一般来说它们模仿Emacs Lisp的求值命令。默认情况下它们会在显示区显示出结果，但是一个前缀参数会让结果插入到当前缓冲区中。
+这些命令每一个都以不同的方式来对一个 Common Lisp 表达式求值。一般来说它们模仿 Emacs Lisp 的求值命令。默认情况下它们会在显示区显示出结果，但是一个前缀参数会让结果插入到当前缓冲区中。
 
 - C-x C-e 或 M-x M-x slime-eval-last-expression
 
@@ -384,9 +384,9 @@ Slime在内部使用comint包来启动Lisp进程。这会产生一些用户可�
 
 - C-M-x 或 M-x slime-eval-defun
 
-  对当前toplevel的形式进行求值并将结果打印到显示区。“C-M-x”会特别对待“defvar”。正常来讲，如果定义的变量已经有一个值了，“defvar”表达式不会做任何事情。但是“C-M-x”命令无条件的将“defvar”表达式里定义的值初始化并赋予指定的值。这个特性十分便于调试Lisp程序。
+  对当前 toplevel 的形式进行求值并将结果打印到显示区。“C-M-x”会特别对待“defvar”。正常来讲，如果定义的变量已经有一个值了，“defvar”表达式不会做任何事情。但是“C-M-x”命令无条件的将“defvar”表达式里定义的值初始化并赋予指定的值。这个特性十分便于调试 Lisp 程序。
 
-如果带数字参数地执行C-M-x或者C-x C-e，它会将结果插入到当前缓冲区，而不是将其打印到显示区。
+如果带数字参数地执行 C-M-x 或者 C-x C-e，它会将结果插入到当前缓冲区，而不是将其打印到显示区。
 
 - C-c : 或 M-x slime-interactive-eval
 
@@ -402,7 +402,7 @@ Slime在内部使用comint包来启动Lisp进程。这会产生一些用户可�
 
 - C-c E 或 M-x slime-edit-value
 
-  在一个叫做“Edit <form>”的新缓冲区里编辑一个可以setf的形式的值。这个值会被插入一个临时缓冲区以便编辑，然后用C-c C-c命令来提交设置于Lisp中。
+  在一个叫做“Edit <form>”的新缓冲区里编辑一个可以 setf 的形式的值。这个值会被插入一个临时缓冲区以便编辑，然后用 C-c C-c 命令来提交设置于 Lisp 中。
 
 - C-x M-e 或 M-x slime-eval-last-expression-display-output
 
@@ -410,15 +410,15 @@ Slime在内部使用comint包来启动Lisp进程。这会产生一些用户可�
 
 - C-c C-u 或 M-x slime-undefine-function
 
-  用fmakunbound来取消当前光标处函数的定义。
+  用 fmakunbound 来取消当前光标处函数的定义。
 
 ## 3.3 编译命令
 
-Slime有许多很好的命令来编译函数、文件和包。好的地方在于，很多Lisp编译器生成的提示和警告会被拦截，然后直接注释给Lisp源文件缓冲区里相应的表达式。（试一试看会发生什么。）
+Slime 有许多很好的命令来编译函数、文件和包。好的地方在于，很多 Lisp 编译器生成的提示和警告会被拦截，然后直接注释给 Lisp 源文件缓冲区里相应的表达式。（试一试看会发生什么。）
 
 - C-c C-c 或 M-x slime-compile-defun
 
-  编译光标处的top-level形式。被选择的区域会闪一下以给出回应，表明是哪一部分被选择了。若给了一个（正的）前缀参数的时候，形式会以最小调试设置来编译。若是一个负的前缀参数，编译速度会被优化。区域里的代码在编译之后将要被执行，总的来说，此命令将该区域写入一个文件，编译该文件，然后加载结果代码。
+  编译光标处的 top-level 形式。被选择的区域会闪一下以给出回应，表明是哪一部分被选择了。若给了一个（正的）前缀参数的时候，形式会以最小调试设置来编译。若是一个负的前缀参数，编译速度会被优化。区域里的代码在编译之后将要被执行，总的来说，此命令将该区域写入一个文件，编译该文件，然后加载结果代码。
 
 - C-c C-k 或 M-x slime-compile-and-load-file
 
@@ -430,13 +430,13 @@ Slime有许多很好的命令来编译函数、文件和包。好的地方在于
 
 - C-c C-l 或 M-x slime-load-file
 
-  加载Lisp文件。此命令用到了Common Lisp的LOAD函数。
+  加载 Lisp 文件。此命令用到了 Common Lisp 的 LOAD 函数。
 
 - M-x slime-compile-region
 
   编译选中的区域。
 
-Slime通过在源代码的形式下加下划线来表示有提示信息。可以通过将鼠标置于文本处或者下面这些选择命令来阅读带有提示信息的编译器消息。
+Slime 通过在源代码的形式下加下划线来表示有提示信息。可以通过将鼠标置于文本处或者下面这些选择命令来阅读带有提示信息的编译器消息。
 
 - M-n 或 M-x slime-next-note
 
@@ -452,7 +452,7 @@ Slime通过在源代码的形式下加下划线来表示有提示信息。可以
 
 - C-x ‘ 或 M-x next-error
 
-  访问下一个错误消息。实际上这不是一个Slime命令，Slime会创建一个隐藏的缓冲区，然后大部分的编译模式的命令（见info “emacs”文件的“Compilation Mode”节点）都会类似批处理编译器一样地编译Lisp。
+  访问下一个错误消息。实际上这不是一个 Slime 命令，Slime 会创建一个隐藏的缓冲区，然后大部分的编译模式的命令（见 info “emacs”文件的“Compilation Mode”节点）都会类似批处理编译器一样地编译 Lisp。
 
 ## 3.4 补全命令
 
@@ -460,11 +460,11 @@ Slime通过在源代码的形式下加下划线来表示有提示信息。可以
 
 - M-TAB 或 M-x slime-complete-symbol
 
-  补全光标处的符号。注意，Slime里有三种模式的补全；默认的模式跟正常的Emacs补全类似（见6.1 slime-complete-symbol-function）
+  补全光标处的符号。注意，Slime 里有三种模式的补全；默认的模式跟正常的 Emacs 补全类似（见 6.1 slime-complete-symbol-function）
 
 ## 3.5 查找定义（“Meta-Point”命令）
 
-Slime提供了熟悉的M-.命令。对于广泛函数来讲此命令会找出所有的方法，而在某些系统上它会做一切其它事情（例如根据DEFSTRUCT定义来追踪结构访问器）。
+Slime 提供了熟悉的 M-. 命令。对于广泛函数来讲此命令会找出所有的方法，而在某些系统上它会做一切其它事情（例如根据 DEFSTRUCT 定义来追踪结构访问器）。
 
 - M-. 或 M-x slime-edit-definition
 
@@ -472,27 +472,27 @@ Slime提供了熟悉的M-.命令。对于广泛函数来讲此命令会找出所
 
 - M-, 或 M-# 或 M-x slime-pop-find-definition-stack
 
-  回到M-.命令执行的光标处。如果M-.被执行了多次，那么此命令会多重地回溯。
+  回到 M-. 命令执行的光标处。如果 M-. 被执行了多次，那么此命令会多重地回溯。
 
 - C-x 4 . 或 M-x slime-edit-definition-other-window
 
-  类似slime-edit-definition，但是会跳到另一个窗口来编辑其定义。
+  类似 slime-edit-definition，但是会跳到另一个窗口来编辑其定义。
 
 - C-x 5 . 或 M-x slime-edit-definition-other-frame
 
-  类似slime-edit-definition，但是会跳到另一个框架来编辑其定义。
+  类似 slime-edit-definition，但是会跳到另一个框架来编辑其定义。
 
 - M-x slime-edit-definition-with-etags
 
-  使用ETAGES的表来寻找当前光标处的定义。
+  使用 ETAGES 的表来寻找当前光标处的定义。
 
 ## 3.6 文档命令
 
-Slime的在线文档命令效仿了Emacs的例子。这些命令都以C-c C-d为前缀，并且允许更改其键绑定或者取消更改（见 3.1.4 键绑定）
+Slime 的在线文档命令效仿了 Emacs 的例子。这些命令都以 C-c C-d 为前缀，并且允许更改其键绑定或者取消更改（见 3.1.4 键绑定）
 
 - SPC 或 M-x slime-space
 
-  Space键插入一个空格键，并且也查找并显示出当前光标处函数的参数列表，如果有的话。
+  Space 键插入一个空格键，并且也查找并显示出当前光标处函数的参数列表，如果有的话。
 
 - C-c C-d d 或 M-x slime-describe-symbol
 
@@ -504,25 +504,25 @@ Slime的在线文档命令效仿了Emacs的例子。这些命令都以C-c C-d为
 
 - C-c C-d a 或 M-x slime-apropos
 
-  对于一个正则表达式执行一个合适的搜索，来搜索所有的Lisp符号名称，并且显示出相应的文档字符串。默认情况下所有包的外部变量都会被搜索，你可以用一个前缀参数来指定特定的包或者是否包含未导出的符号。
+  对于一个正则表达式执行一个合适的搜索，来搜索所有的 Lisp 符号名称，并且显示出相应的文档字符串。默认情况下所有包的外部变量都会被搜索，你可以用一个前缀参数来指定特定的包或者是否包含未导出的符号。
 
 - C-c C-d z 或 M-x slime-apropos-all
 
-  类似slime-apropos但是默认包含所有内部符号。
+  类似 slime-apropos 但是默认包含所有内部符号。
 
 - C-c C-d p 或 M-x slime-apropos-package
 
-  显示包内所有符号的合适的结果。这个命令是用来在一个较高层次浏览包的。加上包名补全，它可以差不多被当作是一个Smalltalk类似的图像浏览器。
+  显示包内所有符号的合适的结果。这个命令是用来在一个较高层次浏览包的。加上包名补全，它可以差不多被当作是一个 Smalltalk 类似的图像浏览器。
 
 - C-c C-d h 或 M-x slime-hyperspec-lookup
 
-  在《Common Lisp Hyperspec》里查找当前光标处的符号。它使用常用的hyperspec.el来在浏览器里显示相应的部分。Hyperspec可以在网络上或者在common-lisp-hyperspec-root处，默认打开的浏览器通过browse-url-browser-function指定。
+  在《Common Lisp Hyperspec》里查找当前光标处的符号。它使用常用的 hyperspec.el 来在浏览器里显示相应的部分。Hyperspec 可以在网络上或者在 common-lisp-hyperspec-root 处，默认打开的浏览器通过 browse-url-browser-function 指定。
 
-  注意：这里就是一个C-c C-d h跟C-c C-d C-h不同的例子
+  注意：这里就是一个 C-c C-d h 跟 C-c C-d C-h 不同的例子
 
 - C-c C-d ~ 或 M-x hyperspec-lookup-format
 
-  在《Common Lisp Hyperspec》里查找一个foramt格式控制符。
+  在《Common Lisp Hyperspec》里查找一个 foramt 格式控制符。
 
 - C-c C-d # 或 M-x hyperspec-lookup-reader-macro
 
@@ -530,9 +530,9 @@ Slime的在线文档命令效仿了Emacs的例子。这些命令都以C-c C-d为
 
 ## 3.7 交叉引用命令
 
-Slime的交叉引用命令是基于Lisp系统的支持的，而此特性在不同Lisp实现上差异颇大。对于那些没有内置XREF支持的Lisp系统，Slime需要一个可移植的XREF包，这个包是从CMU AI Repository获得并且与Slime绑定在一起的。
+Slime 的交叉引用命令是基于 Lisp 系统的支持的，而此特性在不同 Lisp 实现上差异颇大。对于那些没有内置 XREF 支持的 Lisp 系统，Slime 需要一个可移植的 XREF 包，这个包是从 CMU AI Repository 获得并且与 Slime 绑定在一起的。
 
-所以这些命令的操作对象都是当前光标处的符号，如果没有，则会要求用户输入。如果有前缀参数，则总会要求用户输入符号。你可以输入以下所示的键绑定，或者将最后一个键加上control。见 3.1.4 键绑定。
+所以这些命令的操作对象都是当前光标处的符号，如果没有，则会要求用户输入。如果有前缀参数，则总会要求用户输入符号。你可以输入以下所示的键绑定，或者将最后一个键加上 control。见 3.1.4 键绑定。
 
 - C-c C-w c 或 M-x slime-who-calls
 
@@ -562,7 +562,7 @@ Slime的交叉引用命令是基于Lisp系统的支持的，而此特性在不�
 
   显示一个类所有已知的方法。
 
-当然也有所谓的“列出调用者/被调用者”命令。这些操作会在一个很底层的层次上搜寻堆上的函数对象，来确定所有调用的情况。只有某些Lisp系统有此功能，并且在无法获得精确的XREF信息时，这些功能可以作为备用。
+当然也有所谓的“列出调用者 / 被调用者”命令。这些操作会在一个很底层的层次上搜寻堆上的函数对象，来确定所有调用的情况。只有某些 Lisp 系统有此功能，并且在无法获得精确的 XREF 信息时，这些功能可以作为备用。
 
 - C-c < 或 M-x slime-list-callers
 
@@ -572,17 +572,17 @@ Slime的交叉引用命令是基于Lisp系统的支持的，而此特性在不�
 
   列出一个函数所有调用的函数。
 
-### 3.7.1 XREF缓冲区命令
+### 3.7.1 XREF 缓冲区命令
 
-XREF缓冲区可用的命令。
+XREF 缓冲区可用的命令。
 
 - RET 或 M-x slime-show-xref
 
-  在另一个窗口里显示当前光标处的符号的定义。不离开XREF缓冲区。
+  在另一个窗口里显示当前光标处的符号的定义。不离开 XREF 缓冲区。
 
 - Space 或 M-x slime-goto-xref
 
-  在另一个窗口里显示当前光标处的符号的定义并且关闭XREF缓冲区。
+  在另一个窗口里显示当前光标处的符号的定义并且关闭 XREF 缓冲区。
 
 - C-c C-c 或 M-x slime-recompile-xref
 
@@ -596,7 +596,7 @@ XREF缓冲区可用的命令。
 
 - C-c C-m 或 M-x slime-macroexpand-1
 
-  将光标处的表达式宏展开一次。如果带有一个前缀参数，则使用macroexpand代替macroexpand-1。
+  将光标处的表达式宏展开一次。如果带有一个前缀参数，则使用 macroexpand 代替 macroexpand-1。
 
 - C-c M-m 或 M-x slime-macroexpand-all
 
@@ -604,13 +604,13 @@ XREF缓冲区可用的命令。
 
 - M-x slime-compiler-macroexpand-1
 
-  显示光标处的编译宏展开的sexp。
+  显示光标处的编译宏展开的 sexp。
 
 - M-x slime-compiler-macroexpand
 
-  反复展开光标处的编译宏的sexp。
+  反复展开光标处的编译宏的 sexp。
 
-更多的minor-mode命令及相关讨论见5.2 slime-macroexpansion-minor-mode。
+更多的 minor-mode 命令及相关讨论见 5.2 slime-macroexpansion-minor-mode。
 
 ## 3.9 分解命令
 
@@ -626,37 +626,37 @@ XREF缓冲区可用的命令。
 
   停止跟踪所有函数。
 
-## 3.10 中止/恢复命令
+## 3.10 中止 / 恢复命令
 
 - C-c C-b 或 M-x slime-interrupt
 
-  中断Lisp进程（发送SIGINT）。
+  中断 Lisp 进程（发送 SIGINT）。
 
 - M-x slime-restart-inferior-lisp
 
-  重启inferior-lisp进程。
+  重启 inferior-lisp 进程。
 
 - C-c ~ 或 M-x slime-sync-package-and-default-directory
 
-  从Emacs到Lisp同步当前包到工作目录。
+  从 Emacs 到 Lisp 同步当前包到工作目录。
 
 - C-c M-p 或 M-x slime-repl-set-package
 
-  设置REPL的包。
+  设置 REPL 的包。
 
 - M-x slime-cd
 
-  设置Lisp进程所在的当前目录。这也改变了REPL的当前目录。
+  设置 Lisp 进程所在的当前目录。这也改变了 REPL 的当前目录。
 
 - M-x slime-pwd
 
-  打印出Lisp进程的当前目录。
+  打印出 Lisp 进程的当前目录。
 
 ## 3.11 检查命令
 
-Slime查看器是一个基于Emacs的对普通INSPECT函数的替代选择。Slime查看器会在一个Emacs缓冲区中结合使用文本和对其它对象的超链接来展示一个对象。
+Slime 查看器是一个基于 Emacs 的对普通 INSPECT 函数的替代选择。Slime 查看器会在一个 Emacs 缓冲区中结合使用文本和对其它对象的超链接来展示一个对象。
 
-Slime查看器可以轻易地为你的程序里的对象做定制化。详细用法见swank-backend.lisp里的inspect-for-emacs广泛函数。
+Slime 查看器可以轻易地为你的程序里的对象做定制化。详细用法见 swank-backend.lisp 里的 inspect-for-emacs 广泛函数。
 
 - C-c I 或 M-x slime-inspect
 
@@ -674,15 +674,15 @@ Slime查看器可以轻易地为你的程序里的对象做定制化。详细用
 
 - v 或 M-x slime-inspector-toggle-verbose
 
-  在冗余模式和简洁模式之间切换。默认值由swank:*inspector-verbose*指定。
+  在冗余模式和简洁模式之间切换。默认值由 swank:*inspector-verbose* 指定。
 
 - l 或 M-x slime-inspector-pop
 
-  回到前一个对象（从RET返回）。
+  回到前一个对象（从 RET 返回）。
 
 - n 或 M-x slime-inspector-next
 
-  l的逆操作。也绑定到了空格键。
+  l 的逆操作。也绑定到了空格键。
 
 - g 或 M-x slime-inspector-reinspect
 
@@ -706,7 +706,7 @@ Slime查看器可以轻易地为你的程序里的对象做定制化。详细用
 
 - M-RET 或 M-x slime-inspector-copy-down
 
-  将光标之后所有在“*”变量里的值存储起来。这些对象可以之后在REPL中访问。
+  将光标之后所有在“*”变量里的值存储起来。这些对象可以之后在 REPL 中访问。
 
 - TAB, M-x slime-inspector-next-inspectable-object 或 S-TAB, M-x slime-inspector-previous-inspectable-object
 
@@ -714,7 +714,7 @@ Slime查看器可以轻易地为你的程序里的对象做定制化。详细用
 
 ## 3.12 分析命令
 
-所有的分析命令都是给予CMUCL的分析器。它们都是对函数的简单包装，然后打印一些信息到输出缓冲区。
+所有的分析命令都是给予 CMUCL 的分析器。它们都是对函数的简单包装，然后打印一些信息到输出缓冲区。
 
 - M-x slime-toggle-profile-fdefinition
 
@@ -748,37 +748,37 @@ Slime查看器可以轻易地为你的程序里的对象做定制化。详细用
 
 - C-c C-a, M-x slime-nop 和 C-c C-v, M-x slime-nop
 
-  此键绑定由inf-lisp遮盖。
+  此键绑定由 inf-lisp 遮盖。
 
 ## 3.14 语义缩进
 
-Slime会自动地决定如何缩进你的Lisp程序里的宏。为了达到这个目的，Lisp端会查看系统内所有的宏并且将有&body参数的宏报告给Emacs。然后Emacs会对这些宏的缩进特殊处理，通常情况是，将其第一个参数缩进四个空格，而body参数缩进两个空格。
+Slime 会自动地决定如何缩进你的 Lisp 程序里的宏。为了达到这个目的，Lisp 端会查看系统内所有的宏并且将有 &body 参数的宏报告给 Emacs。然后 Emacs 会对这些宏的缩进特殊处理，通常情况是，将其第一个参数缩进四个空格，而 body 参数缩进两个空格。
 
 这仅仅“够用”。如果你是那种很幸运的人，那么你要阅读本节剩下的内容。
 
-为了简化实现，Slime并不区分宏和其他简单的符号名，除了不同的包名。这使得Slime和Emacs自己的缩进方式兼容得很好。但是，如果你有些宏和某些简单符号有相同的名字，那么它们的缩进会相同，使用它们的参数列表里任一缩进方式。你可以找出有哪些符号有缩进冲突：
+为了简化实现，Slime 并不区分宏和其他简单的符号名，除了不同的包名。这使得 Slime 和 Emacs 自己的缩进方式兼容得很好。但是，如果你有些宏和某些简单符号有相同的名字，那么它们的缩进会相同，使用它们的参数列表里任一缩进方式。你可以找出有哪些符号有缩进冲突：
 
 ```emacs-lisp
   (swank:print-indentation-lossage)
 ```
 
-如果有冲突让你很恼火，不要崩溃，只要用你喜欢的缩进方式覆盖elisp符号的common-lisp-indent-function属性就可以了。Slime不会覆盖你的定制变量，它只是尝试给你最好的默认设置。
+如果有冲突让你很恼火，不要崩溃，只要用你喜欢的缩进方式覆盖 elisp 符号的 common-lisp-indent-function 属性就可以了。Slime 不会覆盖你的定制变量，它只是尝试给你最好的默认设置。
 
 更加巧妙的是，有个不那么完美的缓存机制来保证良好的性能。
 
-理想情况下，在每次Emacs操作之后，Lisp会自动查看所有符号的缩进的改变情况。但是若要每次都执行，那么效率就太低了。所以，Lisp通常只会查看那些Emacs使用到的属于本地包的符号，而所有的请求都是从它们那里来的。这使得取得在交互环境下定义的宏的缩进变得十分高效。为了查看剩下的那些，当有新的Lisp包被创建的时候——例如新系统被加载，所有的符号都会被查看。
+理想情况下，在每次 Emacs 操作之后，Lisp 会自动查看所有符号的缩进的改变情况。但是若要每次都执行，那么效率就太低了。所以，Lisp 通常只会查看那些 Emacs 使用到的属于本地包的符号，而所有的请求都是从它们那里来的。这使得取得在交互环境下定义的宏的缩进变得十分高效。为了查看剩下的那些，当有新的 Lisp 包被创建的时候——例如新系统被加载，所有的符号都会被查看。
 
-你可以使用M-x slime-update-indentation来强制要求所有符号的缩进信息都被查看。
+你可以使用 M-x slime-update-indentation 来强制要求所有符号的缩进信息都被查看。
 
 ## 3.15 根据读取器的结果字符化
 
 Slime 会自动对读取器条件判断表达式进行求值，例如#+linux，在源代码缓冲区里，所有会被当前 Lisp 连接所忽略掉的代码都会呈现为灰色以示不被读取。
 
-# 四、SLDB：Slime调试器
+# 四、SLDB：Slime 调试器
 
 Slime 有一个自己的基于 Emacs 的调试器，SLDB。Lisp 系统里的状况（Condition）发出的信号会在 Emacs 里通过 Lisp 符号`*DEBUGGER-HOOK*`触发 SLDB。
 
-当有状况发出信号时，SLDB会生成一个新的缓冲区。这个缓冲区会显示对状况的描述、一系列重启选项和调用栈。可以通过提供的命令来出发重启、检查调用栈和在堆栈调用窗口里移动。
+当有状况发出信号时，SLDB 会生成一个新的缓冲区。这个缓冲区会显示对状况的描述、一系列重启选项和调用栈。可以通过提供的命令来出发重启、检查调用栈和在堆栈调用窗口里移动。
 
 ## 4.1 检查窗口
 
@@ -786,11 +786,11 @@ Slime 有一个自己的基于 Emacs 的调试器，SLDB。Lisp 系统里的状�
 
 - t 或 M-x sldb-toggle-details
 
-  出发显示本地变量和CATCH标签
+  出发显示本地变量和 CATCH 标签
 
-- v 或M-x sldb-show-source
+- v 或 M-x sldb-show-source
 
-  查看窗口处的当前代码表达式。此表达式会被展现在Lisp源代码的缓冲区里。
+  查看窗口处的当前代码表达式。此表达式会被展现在 Lisp 源代码的缓冲区里。
 
 - e 或 M-x sldb-eval-in-frame
 
@@ -816,21 +816,21 @@ Slime 有一个自己的基于 Emacs 的调试器，SLDB。Lisp 系统里的状�
 
 - a 或 M-x sldb-abort
 
-  触发ABORT重启。
+  触发 ABORT 重启。
 
 - q 或 M-x sldb-quit
 
-  “QUIT”——THROW一个top-level的Slime请求循环可以捕获的标签。
+  “QUIT”——THROW 一个 top-level 的 Slime 请求循环可以捕获的标签。
 
 - c 或 M-x sldb-continue
 
-  触发CONTINUE重启。
+  触发 CONTINUE 重启。
 
 - 0 ... 9
 
   通过数字触发重启。
 
-重启也可以通过在缓冲区里按RET或者Mouse-2来触发。
+重启也可以通过在缓冲区里按 RET 或者 Mouse-2 来触发。
 
 ## 4.3 在不同的窗口间操作
 
@@ -852,11 +852,11 @@ Slime 有一个自己的基于 Emacs 的调试器，SLDB。Lisp 系统里的状�
 
 ## 4.4 单步调试
 
-单步调试并非在所有的Lisp实现里都是可用的，在那些可用的Lisp实现中，它的表现也很不同。
+单步调试并非在所有的 Lisp 实现里都是可用的，在那些可用的 Lisp 实现中，它的表现也很不同。
 
 - s 或 M-x sldb-step
 
-  单步运行窗口中的下一个表达式。对CMUCL来说，即时在从当前位置可到达的所有代码的位置上设置断点。
+  单步运行窗口中的下一个表达式。对 CMUCL 来说，即时在从当前位置可到达的所有代码的位置上设置断点。
 
 - x 或 M-x sldb-next
 
@@ -870,15 +870,15 @@ Slime 有一个自己的基于 Emacs 的调试器，SLDB。Lisp 系统里的状�
 
 - r 或 M-x sldb-restart-frame
 
-  以当前窗口最先运行时的参数为参数重启。（此命令并非在所有Lisp实现里都可用）
+  以当前窗口最先运行时的参数为参数重启。（此命令并非在所有 Lisp 实现里都可用）
 
 - R 或 M-x sldb-return-from-frame
 
-  在minibuffer里输入一个值，并以这个值为返回值回到窗口。（此命令并非在所有Lisp实现里都可用）
+  在 minibuffer 里输入一个值，并以这个值为返回值回到窗口。（此命令并非在所有 Lisp 实现里都可用）
 
 - B 或 M-x sldb-break-with-default-debugger
 
-  退出SLDB并且以Lisp默认的调试器调试状况。
+  退出 SLDB 并且以 Lisp 默认的调试器调试状况。
 
 - C 或 M-x sldb-inspect-condition
 
@@ -886,59 +886,59 @@ Slime 有一个自己的基于 Emacs 的调试器，SLDB。Lisp 系统里的状�
 
 - : 或 M-x slime-interactive-eval
 
-  在minibuffer里输入一个表达式并求值。
+  在 minibuffer 里输入一个表达式并求值。
 
 # 五、杂项
 
 ## 5.1 slime-selector
 
-slime-selector用来快速切换到重要的缓冲区：REPL、SLDB、你正在hack的Lisp源代码等等。一旦触发slime-selector，该命令会要求你输入一个字母来指定显示哪一个缓冲区。这里是一些选项。
+slime-selector 用来快速切换到重要的缓冲区：REPL、SLDB、你正在 hack 的 Lisp 源代码等等。一旦触发 slime-selector，该命令会要求你输入一个字母来指定显示哪一个缓冲区。这里是一些选项。
 
 - ?
 
-  一个帮助缓冲区，它会列出所有slime-selector可以显示的缓冲区。
+  一个帮助缓冲区，它会列出所有 slime-selector 可以显示的缓冲区。
 
 - r
 
-  当前Slime连接的REPL缓冲区。
+  当前 Slime 连接的 REPL 缓冲区。
 
 - d
 
-  当前连接最近使用的SLDB缓冲区。
+  当前连接最近使用的 SLDB 缓冲区。
 
 - l
 
-  最近访问的Lisp源代码缓冲区。
+  最近访问的 Lisp 源代码缓冲区。
 
 - s
 
-  *slime-scratch*缓冲区。
+  *slime-scratch* 缓冲区。
 
 - c
 
-  Slime连接缓冲区。
+  Slime 连接缓冲区。
 
 - t
 
-  Slime线程缓冲区。
+  Slime 线程缓冲区。
 
-slime-selector没有一个默认的键绑定，但是我们建议你给它设置一个全局的键绑定。你可以像这样将它设置为C-c s：
+slime-selector 没有一个默认的键绑定，但是我们建议你给它设置一个全局的键绑定。你可以像这样将它设置为 C-c s：
 
 ```emacs-lisp
 (global-set-key "\C-c s" 'slime-selector)
 ```
 
-然后你就可以通过C-c s r从任何地方切换到REPL。
+然后你就可以通过 C-c s r 从任何地方切换到 REPL。
 
-宏def-slime-selector-method可以用来定义slime-selector可识别的新缓冲区。
+宏 def-slime-selector-method 可以用来定义 slime-selector 可识别的新缓冲区。
 
 ## 5.2 slime-macroexpansion-minor-mode
 
-一个Slime宏扩展缓冲区提供了一些其它命令（这些命令一直是可用的，只是只有在宏扩展缓冲区里才绑定到了特定的键上）
+一个 Slime 宏扩展缓冲区提供了一些其它命令（这些命令一直是可用的，只是只有在宏扩展缓冲区里才绑定到了特定的键上）
 
 - C-c C-m 或 M-x slime-macroexpand-1-inplace
 
-  像slime-macroexpand-1一样不过原来的形式被展开后的形式替代了。
+  像 slime-macroexpand-1 一样不过原来的形式被展开后的形式替代了。
 
 - g 或 M-x slime-macroexpand-1-inplace
 
@@ -954,11 +954,11 @@ slime-selector没有一个默认的键绑定，但是我们建议你给它设置
 
 ## 5.3 多重连接
 
-Slime可以同时连接到多个Lisp进程。当带有前缀参数地调用M-x slime命令时，如果已经有一个Lisp进程了，它会创建一个新的Lisp连接。这很方便，但是这需要一些技巧来确保你的Slime命令是在你期望的Lisp进程里执行的。
+Slime 可以同时连接到多个 Lisp 进程。当带有前缀参数地调用 M-x slime 命令时，如果已经有一个 Lisp 进程了，它会创建一个新的 Lisp 连接。这很方便，但是这需要一些技巧来确保你的 Slime 命令是在你期望的 Lisp 进程里执行的。
 
-有些缓冲区是连接到特定的Lisp进程的。每个Lisp进程都有自己的REPL缓冲区，在相应缓冲区里输入的所有表达式和所有命令都会被发送到相应的连接。其它Slime创建的进程也类似地跟它们最开始的进程绑定在一起，包括SLDB缓冲区、搜索结果等等。这些缓冲区是跟Lisp进程交互的结果，所以在这些缓冲区里执行的命令也发送到相应的进程。
+有些缓冲区是连接到特定的 Lisp 进程的。每个 Lisp 进程都有自己的 REPL 缓冲区，在相应缓冲区里输入的所有表达式和所有命令都会被发送到相应的连接。其它 Slime 创建的进程也类似地跟它们最开始的进程绑定在一起，包括 SLDB 缓冲区、搜索结果等等。这些缓冲区是跟 Lisp 进程交互的结果，所以在这些缓冲区里执行的命令也发送到相应的进程。
 
-在其它地方执行的命令，例如slime-mode源代码缓冲区，总是使用“默认的“链接。通常来讲是最近建立的连接，但是这可以通过“连接列表“缓冲区重新指定。
+在其它地方执行的命令，例如 slime-mode 源代码缓冲区，总是使用“默认的“链接。通常来讲是最近建立的连接，但是这可以通过“连接列表“缓冲区重新指定。
 
 - C-c C-x c 或 M-x slime-list-connections
 
@@ -968,17 +968,17 @@ Slime可以同时连接到多个Lisp进程。当带有前缀参数地调用M-x s
 
   生成一个缓冲区并显示当前线程。
 
-slime-list-connections生成的缓冲区显示对每个连接有个一行的简介。简介显示了连接的序列号、Lisp实现的名字以及其它的Lisp进程信息。当前的“默认”连接通过一个星号来指示。
+slime-list-connections 生成的缓冲区显示对每个连接有个一行的简介。简介显示了连接的序列号、Lisp 实现的名字以及其它的 Lisp 进程信息。当前的“默认”连接通过一个星号来指示。
 
-connection-list缓冲区里可用的命令有：
+connection-list 缓冲区里可用的命令有：
 
 - RET 或 M-x slime-goto-connection
 
-  显示光标处连接的REPL缓冲区。
+  显示光标处连接的 REPL 缓冲区。
 
 - d 或 M-x slime-connection-list-make-default
 
-  让光标处的连接成为“默认“连接。它会被slime-mode源代码缓冲区的命令使用。
+  让光标处的连接成为“默认“连接。它会被 slime-mode 源代码缓冲区的命令使用。
 
 - g 或 M-x slime-update-connection-list
 
@@ -994,7 +994,7 @@ connection-list缓冲区里可用的命令有：
 
 - M-x slime-connect
 
-  连接到一个运行中的Swank服务器。
+  连接到一个运行中的 Swank 服务器。
 
 - M-x slime-disconnect
 
@@ -1006,95 +1006,95 @@ connection-list缓冲区里可用的命令有：
 
 # 六、定制
 
-## 6.1 Emacs端定制
+## 6.1 Emacs 端定制
 
-Slime的Emacs部分可以通过Emacs的定制系统来进行配置，通过M-x customize-group slime RET。由于此定制系统是自描述的，因此在本文档里我们只会包含某些重要的或者可能有歧义的选项。
+Slime 的 Emacs 部分可以通过 Emacs 的定制系统来进行配置，通过 M-x customize-group slime RET。由于此定制系统是自描述的，因此在本文档里我们只会包含某些重要的或者可能有歧义的选项。
 
 - slime-truncate-lines
 
-  在Slime生成的line-by-line摘要缓冲区里使用truncate-lines的值。这是默认的，来保证行不会被以某种回溯的列表来折叠。它可能会造成某些信息超出屏幕。
+  在 Slime 生成的 line-by-line 摘要缓冲区里使用 truncate-lines 的值。这是默认的，来保证行不会被以某种回溯的列表来折叠。它可能会造成某些信息超出屏幕。
 
 - slime-complete-symbol-function
 
-  用来补全Lisp符号的函数。有三种补全方式：slime-simple-complete-symbol，slime-complete-symbol*（见 8.5 混合补全），和slime-fuzzy-complete-symbol（见 8.6 模糊补全）。
+  用来补全 Lisp 符号的函数。有三种补全方式：slime-simple-complete-symbol，slime-complete-symbol*（见 8.5 混合补全），和 slime-fuzzy-complete-symbol（见 8.6 模糊补全）。
 
-  默认的是slime-simple-complete-symbol，类似于Emacs的补全方式。
+  默认的是 slime-simple-complete-symbol，类似于 Emacs 的补全方式。
 
 - slime-filename-translations
 
-  这个变量控制Emacs和Lisp之间文件名的转换。当你在不同的机器上运行Emacs和Lisp，而它们的文件系统并不相同，或者它们有相同的文件系统但是布局不同，例如使用了SMB的文件共享的时候，这个变量就有用了。
+  这个变量控制 Emacs 和 Lisp 之间文件名的转换。当你在不同的机器上运行 Emacs 和 Lisp，而它们的文件系统并不相同，或者它们有相同的文件系统但是布局不同，例如使用了 SMB 的文件共享的时候，这个变量就有用了。
 
 - slime-net-coding-system
 
-  如果你想在Emacs和Lisp之间传送Unicode字符，你应该设置此变量。例如你使用SBCL，你应该这样设置：
+  如果你想在 Emacs 和 Lisp 之间传送 Unicode 字符，你应该设置此变量。例如你使用 SBCL，你应该这样设置：
 
   ```emacs-lisp
   (setq slime-net-coding-system 'utf-8-unix)
   ```
 
-  要显示Unicode字符你还需要适当的字体，否则这些字符会被渲染成空心方块。如果你使用的是Allegro CL和GNU Emacs，你也可以使用emacs-mule-unix作为编码系统。GNU Emacs给较新的编码提供了很不错的字体。（不同的Lisp系统可以使用不同的编码，见 2.5.2 多种Lisp。）
+  要显示 Unicode 字符你还需要适当的字体，否则这些字符会被渲染成空心方块。如果你使用的是 Allegro CL 和 GNU Emacs，你也可以使用 emacs-mule-unix 作为编码系统。GNU Emacs 给较新的编码提供了很不错的字体。（不同的 Lisp 系统可以使用不同的编码，见 2.5.2 多种 Lisp。）
 
 ### 6.1.1 钩子
 
 - slime-mode-hook
 
-  每次有一个缓冲区进入slime-mode，这个钩子就会启动。它最有用的是在你的Lisp源代码缓冲区里设置当前缓冲区的配置。有个例子是用它来启动slime-autodoc-mode（见 8.7 slime-autodoc-mode）。
+  每次有一个缓冲区进入 slime-mode，这个钩子就会启动。它最有用的是在你的 Lisp 源代码缓冲区里设置当前缓冲区的配置。有个例子是用它来启动 slime-autodoc-mode（见 8.7 slime-autodoc-mode）。
 
 - slime-connected-hook
 
-  这个钩子在每次连接到Lisp服务器的时候建立。有个例子是用它来生成一个打印窗口（见 8.13 打印窗口）。
+  这个钩子在每次连接到 Lisp 服务器的时候建立。有个例子是用它来生成一个打印窗口（见 8.13 打印窗口）。
 
 - sldb-hook
 
-  这个钩子在SLDB启动时创建。这个钩子的函数是从SLDB缓冲区建立后调用的。有个例子是添加add sldb-print-condition函数到这个钩子，这会让所有SLDB调试的状况被REPL缓冲区记录到。
+  这个钩子在 SLDB 启动时创建。这个钩子的函数是从 SLDB 缓冲区建立后调用的。有个例子是添加 add sldb-print-condition 函数到这个钩子，这会让所有 SLDB 调试的状况被 REPL 缓冲区记录到。
 
-## 6.2 Lisp端（Swank）
+## 6.2 Lisp 端（Swank）
 
-Slime的Lisp服务器端（也叫做“Swank”），提供几个变量可供设置。初始化文件~/.swank.lisp在启动时会被自动求值，可以用来设置这些变量。
+Slime 的 Lisp 服务器端（也叫做“Swank”），提供几个变量可供设置。初始化文件~/.swank.lisp 在启动时会被自动求值，可以用来设置这些变量。
 
 ### 6.2.1 通信模式
 
-最重要的可以配置的变量是SWANK:*COMMUNICATION-STYLE*，它指定了Lisp端接收和读取Emacs发出的信息的协议。通信方式的选择会在全局影响Slime的行为。
+最重要的可以配置的变量是 SWANK:*COMMUNICATION-STYLE*，它指定了 Lisp 端接收和读取 Emacs 发出的信息的协议。通信方式的选择会在全局影响 Slime 的行为。
 
 可选的通信方式有：
 
 - NIL
 
-  这种方式只是简单地循环地读取通信套接字里的输入和当Slime协议事件发生是提供服务。这种简单意味着当处于Slime的控制的时候Lisp不能做其它的处理。
+  这种方式只是简单地循环地读取通信套接字里的输入和当 Slime 协议事件发生是提供服务。这种简单意味着当处于 Slime 的控制的时候 Lisp 不能做其它的处理。
 
 - :FD-HANDLER
 
-  这种方式使用经典的Unix的“select-loop()”。Swank通过一个事件分发框架（例如CMUCL和SBCL里的SERVE-EVENT）来注册一个通信套接字，当数据到达时接收一个回调。在这种方式下，从Emacs而来的请求只在Lisp进入了事件循环时才会被检测到并处理。这种方式简单并且可预测。
+  这种方式使用经典的 Unix 的“select-loop()”。Swank 通过一个事件分发框架（例如 CMUCL 和 SBCL 里的 SERVE-EVENT）来注册一个通信套接字，当数据到达时接收一个回调。在这种方式下，从 Emacs 而来的请求只在 Lisp 进入了事件循环时才会被检测到并处理。这种方式简单并且可预测。
 
 - :SIGIO
 
-  这种方式使用带有SIGIO信号处理函数的信号驱动I/O。Lisp接收来自Emacs的请求，附带一个信号，使Lisp中断任何正在做的事来处理请求。这种方式的好处是回应即时，因为Emacs可以使Lisp执行某些操作，即使Lisp正在忙于某些事情。它也允许Emacs并发地发起请求，例如发起一个长期的请求（例如编译）然后在它完成前发起几个短期的请求。它的缺点是它可能其它用户的Lisp代码的SIGIO信号冲突，而且在某些特殊的时刻中断Lisp进程的话则可能产生很严重的后果。
+  这种方式使用带有 SIGIO 信号处理函数的信号驱动 I/O。Lisp 接收来自 Emacs 的请求，附带一个信号，使 Lisp 中断任何正在做的事来处理请求。这种方式的好处是回应即时，因为 Emacs 可以使 Lisp 执行某些操作，即使 Lisp 正在忙于某些事情。它也允许 Emacs 并发地发起请求，例如发起一个长期的请求（例如编译）然后在它完成前发起几个短期的请求。它的缺点是它可能其它用户的 Lisp 代码的 SIGIO 信号冲突，而且在某些特殊的时刻中断 Lisp 进程的话则可能产生很严重的后果。
 
 - :SPAWN
 
-  这种方式通过Lisp里的多线程支持来在每个线程里执行一个请求。这种方式跟:SIGIO有某些类似的特性，但它不使用信号，并且所有来自Emacs的请求都可以并行处理。
+  这种方式通过 Lisp 里的多线程支持来在每个线程里执行一个请求。这种方式跟:SIGIO 有某些类似的特性，但它不使用信号，并且所有来自 Emacs 的请求都可以并行处理。
 
-默认的请求处理方式是根据你的Lisp系统的能力来选择的。通常的选择顺序是：:SPAWN，然后是:SIGIO，然后:FD-HANDLER，最后是NIL。你可以通过调用SWANK-BACKEND::PREFERRED-COMMUNICATION-STYLE来查看默认的方式。你也可以通过在你的Swank初始化文件里设置SWANK:*COMMUNICATION-STYLE*变量来覆盖默认设置。
+默认的请求处理方式是根据你的 Lisp 系统的能力来选择的。通常的选择顺序是：:SPAWN，然后是:SIGIO，然后:FD-HANDLER，最后是 NIL。你可以通过调用 SWANK-BACKEND::PREFERRED-COMMUNICATION-STYLE 来查看默认的方式。你也可以通过在你的 Swank 初始化文件里设置 SWANK:*COMMUNICATION-STYLE* 变量来覆盖默认设置。
 
 ## 6.2.2 其它配置
 
-这些Lisp变量可以通过你的~/.swank.lisp文件设置：
+这些 Lisp 变量可以通过你的~/.swank.lisp 文件设置：
 
 - SWANK:*CONFIGURE-EMACS-INDENTATION*
 
-  这个变量控制宏里&body参数的缩进方式是否会被探测到并发送给Emacs。它默认开启。
+  这个变量控制宏里 &body 参数的缩进方式是否会被探测到并发送给 Emacs。它默认开启。
 
 - SWANK:*GLOBALLY-REDIRECT-IO*
 
-  当它为真，标准输出流（例如*standard-output*）会被全局重定向到Emacs里的REPL。当它为假（默认情况），这些流只是在处理请求时通过动态绑定临时重定向到Emacs。主意*standard-input*现在不会被全局重定向到Emacs，因为当它尝试从Emacs里读取信息时，它跟Lisp原生的REPL交互得很差。
+  当它为真，标准输出流（例如 *standard-output*）会被全局重定向到 Emacs 里的 REPL。当它为假（默认情况），这些流只是在处理请求时通过动态绑定临时重定向到 Emacs。主意 *standard-input* 现在不会被全局重定向到 Emacs，因为当它尝试从 Emacs 里读取信息时，它跟 Lisp 原生的 REPL 交互得很差。
 
 - SWANK:*GLOBAL-DEBUGGER*
 
-  当它为真（默认情况），它让*DEBUGGER-HOOK*全局设置为SWANK:SWANK-DEBUGGER-HOOK，当后让Slime处理Lisp进程里的所有调试工作。这是用来调试多线程或回调驱动的应用的。
+  当它为真（默认情况），它让 *DEBUGGER-HOOK* 全局设置为 SWANK:SWANK-DEBUGGER-HOOK，当后让 Slime 处理 Lisp 进程里的所有调试工作。这是用来调试多线程或回调驱动的应用的。
 
 - SWANK:*SLDB-PRINTER-BINDINGS* 和 SWANK:*MACROEXPAND-PRINTER-BINDINGS* 和 SWANK:*SWANK-PPRINT-BINDINGS*
 
-  这些变量可以在不同的情况下设置打印器。这些变量的值是打印器变量名和对应的值组成的联合列表。例如，在SLDB中开启pretty打印器来处理调用栈，你可以这样：
+  这些变量可以在不同的情况下设置打印器。这些变量的值是打印器变量名和对应的值组成的联合列表。例如，在 SLDB 中开启 pretty 打印器来处理调用栈，你可以这样：
 
   ```emacs-lisp
   (push '(*print-pretty* . t) swank:*sldb-printer-bindings*)
@@ -1102,43 +1102,43 @@ Slime的Lisp服务器端（也叫做“Swank”），提供几个变量可供设
 
 - SWANK:*USE-DEDICATED-OUTPUT-STREAM*
 
-  这个变量控制了是否用一个不安全但很有效的hack来从Lisp打印输出到Emacs。默认是nil，并且强烈建议不要使用它。
+  这个变量控制了是否用一个不安全但很有效的 hack 来从 Lisp 打印输出到 Emacs。默认是 nil，并且强烈建议不要使用它。
 
-  当它为t时，会建立一个单独的套接字来把Lisp的输出打印到Emacs，这比使用协议发送信息来将输出发送到Emacs快。但是，由于不能保证一个专用的输出流和一个给予协议消息的流之间的时间，Lisp命令的输出到达的时间可能在REPL相应时间之前或之后。输出结果和REPL的显示结果可能以错误的顺序呈现，甚至在REPL里交叉出现。使用一个专用的输出流也会让用SSH跟一个在远程服务器上的Lisp程序通信变得困难。（见 7.1 连接到远程Lisp）
+  当它为 t 时，会建立一个单独的套接字来把 Lisp 的输出打印到 Emacs，这比使用协议发送信息来将输出发送到 Emacs 快。但是，由于不能保证一个专用的输出流和一个给予协议消息的流之间的时间，Lisp 命令的输出到达的时间可能在 REPL 相应时间之前或之后。输出结果和 REPL 的显示结果可能以错误的顺序呈现，甚至在 REPL 里交叉出现。使用一个专用的输出流也会让用 SSH 跟一个在远程服务器上的 Lisp 程序通信变得困难。（见 7.1 连接到远程 Lisp）
 
 - SWANK:*DEDICATED-OUTPUT-STREAM-PORT*
 
-  当*USE-DEDICATED-OUTPUT-STREAM*是t，流会在此端口开启。默认值是0，表示流会在某个随机端口开启。
+  当 *USE-DEDICATED-OUTPUT-STREAM* 是 t，流会在此端口开启。默认值是 0，表示流会在某个随机端口开启。
 
 - SWANK:*LOG-EVENTS*
 
-  将这个变量设置为t会让所有与Emacs交换的协议信息都打印到*TERMINAL-IO*。这在底层调试和观察Slime底层如何运行是很有用。*TERMINAL-IO*的输出可以在Lisp系统自己的监视器里看到，通常是*inferior-lisp*缓冲区。
+  将这个变量设置为 t 会让所有与 Emacs 交换的协议信息都打印到 *TERMINAL-IO*。这在底层调试和观察 Slime 底层如何运行是很有用。*TERMINAL-IO* 的输出可以在 Lisp 系统自己的监视器里看到，通常是 *inferior-lisp* 缓冲区。
 
 # 七、小技巧
 
-## 7.1 连接到远程Lisp
+## 7.1 连接到远程 Lisp
 
-### 7.1.1 设置Lisp镜像
+### 7.1.1 设置 Lisp 镜像
 
-如果你不想通过一般的基于Emacs的方式加载swank，只需要加载swank-load.lisp文件就可以了。只需要在一个运行中的Lisp镜像[[1]](#1)里执行以下代码：
+如果你不想通过一般的基于 Emacs 的方式加载 swank，只需要加载 swank-load.lisp 文件就可以了。只需要在一个运行中的 Lisp 镜像 [[1]](#1) 里执行以下代码：
 
 ```emacs-lisp
   (load "/path/to/swank-loader.lisp")
 ```
 
-现在，我们需要做的就是启动swank服务器。在第一个例子里，我们假设使用默认配置。
+现在，我们需要做的就是启动 swank 服务器。在第一个例子里，我们假设使用默认配置。
 
 ```emacs-lisp
   (swank:create-server)
 ```
 
-由于我们将要使用ssh[[2]](#2)来建立链接并且只打开了一个端口，我们不希望swank使用另一个端口作为输出（目前这在swank里是默认的）：
+由于我们将要使用 ssh[[2]](#2) 来建立链接并且只打开了一个端口，我们不希望 swank 使用另一个端口作为输出（目前这在 swank 里是默认的）：
 
 ```emacs-lisp
   (setf swank:*use-dedicated-output-stream* nil)
 ```
 
-如果你有其它特别的需求（例如在结束后重新连接到swank），请查看swank:create-server的其它参数。其中的一些参数如下：
+如果你有其它特别的需求（例如在结束后重新连接到 swank），请查看 swank:create-server 的其它参数。其中的一些参数如下：
 
 - :PORT
 
@@ -1150,11 +1150,11 @@ Slime的Lisp服务器端（也叫做“Swank”），提供几个变量可供设
 
 - :DONE-CLOSE
 
-  布尔值，指明了在服务器在接受了第一个连接后是否还会接收其它连接（默认值：nil）。对于你希望可以随时连接的长期运行的Lisp进程，指定:done-close t
+  布尔值，指明了在服务器在接受了第一个连接后是否还会接收其它连接（默认值：nil）。对于你希望可以随时连接的长期运行的 Lisp 进程，指定:done-close t
 
 - :CODING-SYSTEM
 
-  字符串，指明了Emacs和Lisp之间进行通讯的编码
+  字符串，指明了 Emacs 和 Lisp 之间进行通讯的编码
 
 更加完整的实例如下：
 
@@ -1162,14 +1162,14 @@ Slime的Lisp服务器端（也叫做“Swank”），提供几个变量可供设
   (swank:create-server :port 4005  :dont-close t :coding-system "utf-8-unix")
 ```
 
-在Emacs端，你会进行类似如下的设置来连接到同一台机器上的Lisp镜像：
+在 Emacs 端，你会进行类似如下的设置来连接到同一台机器上的 Lisp 镜像：
 
 ```emacs-lisp
   (setq slime-net-coding-system 'utf-8-unix)
   (slime-connect "127.0.0.1" 4005)
 ```
 
-### 7.1.2 设置Emacs
+### 7.1.2 设置 Emacs
 
 现在我们需要在本地机器和远程机器之间建立连接。
 
@@ -1177,23 +1177,23 @@ Slime的Lisp服务器端（也叫做“Swank”），提供几个变量可供设
   ssh -L4005:127.0.0.1:4005 username@remote.example.com
 ```
 
-这里调用的ssh在本地机器的 4005 端口和远程机器的 4005 端口上建立了一个 ssh 连接[[3]](#3)。
+这里调用的 ssh 在本地机器的 4005 端口和远程机器的 4005 端口上建立了一个 ssh 连接 [[3]](#3)。
 
-最后，我们启动Slime：
+最后，我们启动 Slime：
 
 ```emacs-lisp
   M-x slime-connect RET RET
 ```
 
-RET RET按键表示我们要使用默认主机（127.0.0.1）和默认端口（4005）。虽然我们是连接到远程机器上的，ssh连接让Emacs以为我们是在本地操作。
+RET RET 按键表示我们要使用默认主机（127.0.0.1）和默认端口（4005）。虽然我们是连接到远程机器上的，ssh 连接让 Emacs 以为我们是在本地操作。
 
 ### 7.1.3 设置路径名翻译
 
-远程运行swank的一个主要问题就是，Emacs以为可以通过普通的文件名找到文件。如果我们希望例如slime-compile-and-load-file （C-c C-k）或者slime-edit-definition （M-.）这样的函数正常工作，我们需要找到一种方法让本地的Emacs正确地找到远程文件。
+远程运行 swank 的一个主要问题就是，Emacs 以为可以通过普通的文件名找到文件。如果我们希望例如 slime-compile-and-load-file （C-c C-k）或者 slime-edit-definition （M-.）这样的函数正常工作，我们需要找到一种方法让本地的 Emacs 正确地找到远程文件。
 
-要做到这一点主要有两种方式。第一种是挂载，使用NFS或者类似的东西。将远程机器的硬盘挂载到本地机器的文件系统上，这样的话例如/opt/project/source.lisp的文件名就可以在两台机器上都指向同一个文件。不幸的是，NFS很慢，而且容易出错，并且不总是可行的。幸运的是我们有ssh连接以及Emacs的tramp-mode来完成这项工作。
+要做到这一点主要有两种方式。第一种是挂载，使用 NFS 或者类似的东西。将远程机器的硬盘挂载到本地机器的文件系统上，这样的话例如 /opt/project/source.lisp 的文件名就可以在两台机器上都指向同一个文件。不幸的是，NFS 很慢，而且容易出错，并且不总是可行的。幸运的是我们有 ssh 连接以及 Emacs 的 tramp-mode 来完成这项工作。
 
-我们需要做的事情是让Emacs接收一个远程机器上的文件名，然后将其翻译为某种tramp可以理解和使用的格式，反之亦然。假设远程机器的主机名叫做remote.example.com，cl:machine-instance返回“remote”，我们以“user”用户登陆，我们使用slime-tramp扩展包来设置适当的翻译方式，如下：
+我们需要做的事情是让 Emacs 接收一个远程机器上的文件名，然后将其翻译为某种 tramp 可以理解和使用的格式，反之亦然。假设远程机器的主机名叫做 remote.example.com，cl:machine-instance 返回“remote”，我们以“user”用户登陆，我们使用 slime-tramp 扩展包来设置适当的翻译方式，如下：
 
 ```emacs-lisp
   (push (slime-create-filename-translator :machine-instance "remote.example.com"
@@ -1202,9 +1202,9 @@ RET RET按键表示我们要使用默认主机（127.0.0.1）和默认端口（4
         slime-filename-translations)
 ```
 
-## 7.2 重定向全局IO到REPL
+## 7.2 重定向全局 IO 到 REPL
 
-默认情况下Slime并不会改变*standard-output*和REPL以外的其它事物。如果你有一些其它的线程，例如format，write-string等等，相应的输出仅仅能在*inferior-lisp*缓冲区或者是终端下看到，通常来说这很不方便。所以如果你有这样的代码：
+默认情况下 Slime 并不会改变 *standard-output* 和 REPL 以外的其它事物。如果你有一些其它的线程，例如 format，write-string 等等，相应的输出仅仅能在 *inferior-lisp* 缓冲区或者是终端下看到，通常来说这很不方便。所以如果你有这样的代码：
 
 ```emacs-lisp
   (run-in-new-thread
@@ -1212,13 +1212,13 @@ RET RET按键表示我们要使用默认主机（127.0.0.1）和默认端口（4
      (write-line "In some random thread.~%" *standard-output*)))
 ```
 
-并且想让它输出到Slime的REPL缓冲区而不是*inferior-lisp*缓冲区，只需要将swank:*globally-redirect-io*设置为T。
+并且想让它输出到 Slime 的 REPL 缓冲区而不是 *inferior-lisp* 缓冲区，只需要将 swank:*globally-redirect-io* 设置为 T。
 
-注意，这个变量的值只会在swank接收连接的时候被检查，所以你需要把它写在~/.swank.lisp文件里。否则你要自己调用swank::globally-redirect-io-to-connection命令，但是你不应该这样做除非你知道原因。
+注意，这个变量的值只会在 swank 接收连接的时候被检查，所以你需要把它写在~/.swank.lisp 文件里。否则你要自己调用 swank::globally-redirect-io-to-connection 命令，但是你不应该这样做除非你知道原因。
 
-## 7.3 自动连接到Slime
+## 7.3 自动连接到 Slime
 
-如果想要在打开一个Lisp文件的时候自动启动Slime，将以下设置加入~/.emacs文件里：
+如果想要在打开一个 Lisp 文件的时候自动启动 Slime，将以下设置加入~/.emacs 文件里：
 
 ```emacs-lisp
   (add-hook 'slime-mode-hook
@@ -1235,11 +1235,11 @@ Slime 也提供了一个功能相同的 ASDF 系统定义
 
 ### [2]
 
-有一种不使用ssh来连接的方法，但是其副作用是将允许所有东西连接到你的Lisp镜像，所以我们不讨论这种方式
+有一种不使用 ssh 来连接的方法，但是其副作用是将允许所有东西连接到你的 Lisp 镜像，所以我们不讨论这种方式
 
 ### [3]
 
-默认情况下swank监听来自4005端口的连接，如果我们调用swank:create-server函数时指定:port参数，我们就可以使用其它端口了。
+默认情况下 swank 监听来自 4005 端口的连接，如果我们调用 swank:create-server 函数时指定:port 参数，我们就可以使用其它端口了。
 
 
 # 八、扩展包
@@ -1248,7 +1248,7 @@ Slime 也提供了一个功能相同的 ASDF 系统定义
 
 ## 8.1 加载扩展包
 
-默认情况下扩展包并没有被加载。你必须稍微设置一下，这样Emacs就可以知道在哪里找到这些扩展包、加载哪些扩展包。总的来说，你应该调用slime-setup函数，并将需要用的包的名字作为一个列表传给它。例如，加载slime-scratch和slime-editing-commands包的设置如下：
+默认情况下扩展包并没有被加载。你必须稍微设置一下，这样 Emacs 就可以知道在哪里找到这些扩展包、加载哪些扩展包。总的来说，你应该调用 slime-setup 函数，并将需要用的包的名字作为一个列表传给它。例如，加载 slime-scratch 和 slime-editing-commands 包的设置如下：
 
 ```emacs-lisp
   (setq inferior-lisp-program "/opt/sbcl/bin/sbcl") ; your Lisp system
@@ -1257,9 +1257,9 @@ Slime 也提供了一个功能相同的 ASDF 系统定义
   (slime-setup '(slime-scratch slime-editing-commands))
 ```
 
-启动Slime后，这些扩展包的命令应该都可用了。
+启动 Slime 后，这些扩展包的命令应该都可用了。
 
-这里要特别提到REPL和slime-fancy扩展包。许多用户认为REPL（见 8.2 REPL）很必要，而slime-fancy（见 8.20 slime-fancy）加载了REPL包和其它几乎所有常用的包。所以，如果你不知道怎样启动，试试：
+这里要特别提到 REPL 和 slime-fancy 扩展包。许多用户认为 REPL（见 8.2 REPL）很必要，而 slime-fancy（见 8.20 slime-fancy）加载了 REPL 包和其它几乎所有常用的包。所以，如果你不知道怎样启动，试试：
 
 ```emacs-lisp
   (slime-setup '(slime-repl)) ; repl only
@@ -1273,15 +1273,15 @@ Slime 也提供了一个功能相同的 ASDF 系统定义
 
 ## 8.2 REPL：“顶层环境”
 
-Slime使用定制的读-写-打印循环（REPL，也被称作“顶层环境”，或者是监听者）。REPL界面使用Emacs Lisp写成，因此与传统的基于comint的Lisp交互相比，它与Emacs更加契合：
+Slime 使用定制的读 - 写 - 打印循环（REPL，也被称作“顶层环境”，或者是监听者）。REPL 界面使用 Emacs Lisp 写成，因此与传统的基于 comint 的 Lisp 交互相比，它与 Emacs 更加契合：
 
-- 可以通过SLDB调试REPL里表达式的状况信号
+- 可以通过 SLDB 调试 REPL 里表达式的状况信号
 
-- 打印出的不同的返回值可以通过不同的Emacs faces（颜色）加以区分
+- 打印出的不同的返回值可以通过不同的 Emacs faces（颜色）加以区分
 
-- Emacs通过不同的符号管理REPL提示符。这确保了Lisp的输出被插入到正确的位置，并且不会和其它的用户输入搞混。
+- Emacs 通过不同的符号管理 REPL 提示符。这确保了 Lisp 的输出被插入到正确的位置，并且不会和其它的用户输入搞混。
 
-加载REPL需要在你的.emacs文件里调用(slime-setup '(slime-repl))。
+加载 REPL 需要在你的.emacs 文件里调用 (slime-setup '(slime-repl))。
 
 - C-c C-z 或 M-x slime-switch-to-output-buffer
 
@@ -1289,17 +1289,17 @@ Slime使用定制的读-写-打印循环（REPL，也被称作“顶层环境”
 
 - C-c C-y 或 M-x slime-call-defun
 
-  在REPL里调用在当前光标处定义的函数
+  在 REPL 里调用在当前光标处定义的函数
 
-### 8.2.1 REPL命令
+### 8.2.1 REPL 命令
 
 - RET 或 M-x slime-repl-return
 
-  如果输入完成，则在Lisp里对当前输入求值。如果没有，则开启一个新行并缩进。如果给出了前缀参数，则不检查输入完整性而直接求值。
+  如果输入完成，则在 Lisp 里对当前输入求值。如果没有，则开启一个新行并缩进。如果给出了前缀参数，则不检查输入完整性而直接求值。
 
 - C-RET 或 M-x slime-repl-closing-return
 
-  关闭所有未匹配的括号并对当前输入求值。也绑定到了M-RET。
+  关闭所有未匹配的括号并对当前输入求值。也绑定到了 M-RET。
 
 - TAB 或 M-x slime-indent-and-complete-symbol
 
@@ -1311,11 +1311,11 @@ Slime使用定制的读-写-打印循环（REPL，也被称作“顶层环境”
 
 - C-a 或 M-x slime-repl-bol
 
-  到行首，但是在REPL提示符之后。
+  到行首，但是在 REPL 提示符之后。
 
 - C-c C-c 或 M-x slime-interrupt
 
-  以SIGINT中断Lisp进程。
+  以 SIGINT 中断 Lisp 进程。
 
 - C-c M-o 或 M-x slime-repl-clear-buffer
 
@@ -1327,31 +1327,31 @@ Slime使用定制的读-写-打印循环（REPL，也被称作“顶层环境”
 
 ### 8.2.2 输入引导
 
-输入导航（历史）命令是模仿coming-mode的。如果你习惯了类似Bash的键绑定，那么要注意了： M-p和M-n使用当前的输入作为搜索样本，并且类似Bash一样只有在当前行是空的情况下才工作。C-<up>和C-<down>像Bash里的up和down键效果一样。
+输入导航（历史）命令是模仿 coming-mode 的。如果你习惯了类似 Bash 的键绑定，那么要注意了： M-p 和 M-n 使用当前的输入作为搜索样本，并且类似 Bash 一样只有在当前行是空的情况下才工作。C-<up>和 C-<down>像 Bash 里的 up 和 down 键效果一样。
 
 - C-<up> 或 M-x slime-repl-forward-input 和 C-<down> 和 M-x slime-repl-backward-input
 
-  去到前一个/后一个历史输入
+  去到前一个 / 后一个历史输入
 
 - M-n 或 M-x slime-repl-next-input 和 M-p 或 M-x slime-repl-previous-input
 
-  使用当前的输入作为搜索样本，在输入历史里向前/向后搜索相关输入。如果M-n/M-n被连续按两次，第二次调用会使用相同的搜索样本（即使当前输入已经改变）。
+  使用当前的输入作为搜索样本，在输入历史里向前 / 向后搜索相关输入。如果 M-n/M-n 被连续按两次，第二次调用会使用相同的搜索样本（即使当前输入已经改变）。
 
 - M-s 或 M-x slime-repl-next-matching-input 和 M-r 或 M-x slime-repl-previous-matching-input
 
-  使用正则表达式在输入历史里向前/向后搜索
+  使用正则表达式在输入历史里向前 / 向后搜索
 
 - C-c C-n 或 M-x slime-repl-next-prompt 和 C-c C-p 或 M-x slime-repl-previous-prompt
 
-  在REPL缓冲区的当前和前一个提示符之间移动。在有之前输入的一行里按RET会把那一行复制到最新的提示符处。
+  在 REPL 缓冲区的当前和前一个提示符之间移动。在有之前输入的一行里按 RET 会把那一行复制到最新的提示符处。
 
-slime-repl-wrap-history变量控控制了环绕行为，即是如果到了末尾那么是否应该重新跳转到历史的最开头。
+slime-repl-wrap-history 变量控控制了环绕行为，即是如果到了末尾那么是否应该重新跳转到历史的最开头。
 
 ### 8.2.3 快捷命令
 
-“快捷命令”是一组通过名称调用的REPL命令。要调用一个快捷命令，你需要先在REPL提示符后输入一个逗号，然后再输入命令的名称来执行。
+“快捷命令”是一组通过名称调用的 REPL 命令。要调用一个快捷命令，你需要先在 REPL 提示符后输入一个逗号，然后再输入命令的名称来执行。
 
-快捷命令处理一些类似于切换目录和加载编译Lisp系统的事务。快捷命令在下面列出，或者你可以通过help快捷命令来交互式地列出来。
+快捷命令处理一些类似于切换目录和加载编译 Lisp 系统的事务。快捷命令在下面列出，或者你可以通过 help 快捷命令来交互式地列出来。
 
 - change-directory (aka !d, cd)
 
@@ -1363,7 +1363,7 @@ slime-repl-wrap-history变量控控制了环绕行为，即是如果到了末尾
 
 - compile-and-load (aka cl)
 
-  编译（如果）并加载一个Lisp文件
+  编译（如果）并加载一个 Lisp 文件
 
 - defparameter (aka !)
 
@@ -1399,7 +1399,7 @@ slime-repl-wrap-history变量控控制了环绕行为，即是如果到了末尾
 
 - quit
 
-  退出Lisp
+  退出 Lisp
 
 - resend-form
 
@@ -1407,19 +1407,19 @@ slime-repl-wrap-history变量控控制了环绕行为，即是如果到了末尾
 
 - restart-inferior-lisp
 
-  重启*inferior-lisp*并重新连接Slime
+  重启 *inferior-lisp* 并重新连接 Slime
 
 - sayoonara
 
-  退出所有Lisp并关闭所有Slime缓冲区
+  退出所有 Lisp 并关闭所有 Slime 缓冲区
 
-## 8.3 多REPL
+## 8.3 多 REPL
 
-slime-mrepl扩展包为多监听者缓冲区提供了支持。M-x slime-open-listener命令创建一个新的缓冲区。在多线程Lisp里，每一个监听者都与一个单独的线程相连。在单线程Lisp里，创建多监听者缓冲区也是可以的，但是其命令都是在同一个进程里顺序执行的。
+slime-mrepl 扩展包为多监听者缓冲区提供了支持。M-x slime-open-listener 命令创建一个新的缓冲区。在多线程 Lisp 里，每一个监听者都与一个单独的线程相连。在单线程 Lisp 里，创建多监听者缓冲区也是可以的，但是其命令都是在同一个进程里顺序执行的。
 
 ## 8.4 inferior-slime-mode
 
-inferior-slime-mode是一个用来与*inferior-lisp*缓冲区一起使用的次模式。它提供了一些Slime命令，例如符号补全和文档查询。它也跟踪Lisp进程的当前目录。将以下代码加入.emacs配置来使用它：
+inferior-slime-mode 是一个用来与 *inferior-lisp* 缓冲区一起使用的次模式。它提供了一些 Slime 命令，例如符号补全和文档查询。它也跟踪 Lisp 进程的当前目录。将以下代码加入.emacs 配置来使用它：
 
 ```emacs-lisp
   (slime-setup '(inferior-slime-mode))
@@ -1427,29 +1427,29 @@ inferior-slime-mode是一个用来与*inferior-lisp*缓冲区一起使用的次�
 
 - M-x inferior-slime-mode
 
-  打开或关闭inferior-slime-mode
+  打开或关闭 inferior-slime-mode
 
-inferior-slime-mode-map变量包含了额外的键绑定
+inferior-slime-mode-map 变量包含了额外的键绑定
 
 ## 8.5 混合补全
 
-slime-c-p-c扩展包提供了不同的符号补全算法，它通过中划线分割的符号名 [[1]](#1-1)的单词子串来进行“并行”的补全。形式上来讲，“a-b-c”可以补全任何匹配“^a.*-b.*-c.*”正则表达式的符号（“圆点”匹配任何除了中划线之外的东西）。下面的例子会给你更直观的感觉：
+slime-c-p-c 扩展包提供了不同的符号补全算法，它通过中划线分割的符号名 [[1]](#1-1) 的单词子串来进行“并行”的补全。形式上来讲，“a-b-c”可以补全任何匹配“^a.*-b.*-c.*”正则表达式的符号（“圆点”匹配任何除了中划线之外的东西）。下面的例子会给你更直观的感觉：
 
-- m-v-b补全为multiple-value-bind。
+- m-v-b 补全为 multiple-value-bind。
 
-- w-open稍有歧义：它可以补全with-open-file或with-open-stream。它会扩展到最长的相同匹配（with-open-）然后光标会停留在有歧义的第一个字符处，在这里就是最后一个单词处。
+- w-open 稍有歧义：它可以补全 with-open-file 或 with-open-stream。它会扩展到最长的相同匹配（with-open-）然后光标会停留在有歧义的第一个字符处，在这里就是最后一个单词处。
 
-- w--stream扩展为with-open-stream
+- w--stream 扩展为 with-open-stream
 
-slime-c-p-c-unambiguous-prefix-p变量定义了在补全符号后光标应该置于何处。例如f-o可能的补全是finish-output和force-output，默认情况下光标会移动到f后面，因为这里是明确的前缀。如果f-o are finish-output and force-output是nil，光标会到插入的文本的最后，在这里就是在o之后。
+slime-c-p-c-unambiguous-prefix-p 变量定义了在补全符号后光标应该置于何处。例如 f-o 可能的补全是 finish-output 和 force-output，默认情况下光标会移动到 f 后面，因为这里是明确的前缀。如果 f-o are finish-output and force-output 是 nil，光标会到插入的文本的最后，在这里就是在 o 之后。
 
-除此之外，slime-c-p-c也为字符名提供补全（对很多可以识别Unicode的Lisp实现来讲通常很有用）：
+除此之外，slime-c-p-c 也为字符名提供补全（对很多可以识别 Unicode 的 Lisp 实现来讲通常很有用）：
 
 ```sh
   CL-USER> #\Sp<TAB>
 ```
 
-在这里Slime会将其补全为#\Space，但在一个可以识别Unicode的实现里，就可能会有以下的补全：
+在这里 Slime 会将其补全为#\Space，但在一个可以识别 Unicode 的实现里，就可能会有以下的补全：
 
 ```sh
   Space                              Space
@@ -1457,17 +1457,17 @@ slime-c-p-c-unambiguous-prefix-p变量定义了在补全符号后光标应该置
   Spherical_Angle_Opening_Left       Spherical_Angle_Opening_Up
 ```
 
-slime-c-p-c扩展包也提供了对关键字的大小写敏感的补全。例如：
+slime-c-p-c 扩展包也提供了对关键字的大小写敏感的补全。例如：
 
 ```sh
   CL-USER> (find 1 '(1 2 3) :s<TAB>
 ```
 
-在这里Slime会补全为:start，而不是将所有以:s开头的关键字列出来。
+在这里 Slime 会补全为:start，而不是将所有以:s 开头的关键字列出来。
 
 - C-c C-s 或 M-x slime-complete-form
 
-如果有的话，将当前光标处的函数的参数列表列出来并插入缓冲区。更加一般地，此命令给不完全的形式的缺失参数提供了一个模板。对于发现泛函数的额外参数，处理make-instance、defmethod和其它很多函数来说有特殊的代码，例如：
+如果有的话，将当前光标处的函数的参数列表列出来并插入缓冲区。更加一般地，此命令给不完全的形式的缺失参数提供了一个模板。对于发现泛函数的额外参数，处理 make-instance、defmethod 和其它很多函数来说有特殊的代码，例如：
 
 ```emacs-lisp
   (subseq "abc" <C-c C-s>
@@ -1491,7 +1491,7 @@ slime-c-p-c扩展包也提供了对关键字的大小写敏感的补全。例如
 
 ## 8.6 模糊补全
 
-slime-fuzzy扩展包提供了另一种符号补全方式。
+slime-fuzzy 扩展包提供了另一种符号补全方式。
 
 [最好有人描述一下这种算法到底是做什么的]
 
@@ -1507,13 +1507,13 @@ slime-fuzzy扩展包提供了另一种符号补全方式。
 
 - C-c M-i 或 M-x slime-fuzzy-complete-symbol
 
-  根据当前光标处的缩写列出所有可能的补全。如果你将变量slime-complete-symbol-function的值设为这个命令，则可以通过M-TAB使用模糊补全。
+  根据当前光标处的缩写列出所有可能的补全。如果你将变量 slime-complete-symbol-function 的值设为这个命令，则可以通过 M-TAB 使用模糊补全。
 
 ## 8.7 slime-autodoc-mode
 
-Autodoc模式是一个用来自动显示光标附近符号的相关信息的minor-mode。对于函数名，参数列表会被显示，对于全局变量，则显示它的值。Autodoc是通过Emacs的eldoc-mode来实现的。
+Autodoc 模式是一个用来自动显示光标附近符号的相关信息的 minor-mode。对于函数名，参数列表会被显示，对于全局变量，则显示它的值。Autodoc 是通过 Emacs 的 eldoc-mode 来实现的。
 
-该模式可以通过你~/.emacs文件里的slime-setup调用来默认开启：
+该模式可以通过你~/.emacs 文件里的 slime-setup 调用来默认开启：
 
 ```emacs-lisp
   (slime-setup '(slime-autodoc))
@@ -1521,47 +1521,47 @@ Autodoc模式是一个用来自动显示光标附近符号的相关信息的mino
 
 - M-x slime-arglist NAME
 
-  显示函数NAME的参数列表
+  显示函数 NAME 的参数列表
 
 - M-x slime-autodoc-mode
 
-  根据参数的值开启或关闭autodoc-mode。当没有参数时，触发该模式。
+  根据参数的值开启或关闭 autodoc-mode。当没有参数时，触发该模式。
 
-如果变量slime-use-autodoc-mode被设置（默认情况），Emacs会启动一个计时器，否则信息只会在按SPC之后显示。
+如果变量 slime-use-autodoc-mode 被设置（默认情况），Emacs 会启动一个计时器，否则信息只会在按 SPC 之后显示。
 
 ## 8.8 ASDF
 
-ASDF是一个流行的“系统构建工具”。slime-asdf扩展包提供了一些命令来从Emacs里加载和编译这些系统。ASDF本身没有被包含在Slime里，你必须自己把它加载到Lisp里。还有，你必须在连接之前加载ASDF，否则你会收到关于符号缺失的错误。
+ASDF 是一个流行的“系统构建工具”。slime-asdf 扩展包提供了一些命令来从 Emacs 里加载和编译这些系统。ASDF 本身没有被包含在 Slime 里，你必须自己把它加载到 Lisp 里。还有，你必须在连接之前加载 ASDF，否则你会收到关于符号缺失的错误。
 
 - M-x slime-load-system NAME
 
-  编译并加载ASDF系统。默认的系统名字是从当前目录下第一个符合*.asd的文件里获得的。
+  编译并加载 ASDF 系统。默认的系统名字是从当前目录下第一个符合 *.asd 的文件里获得的。
 
 - M-x slime-open-system NAME &optional LOAD
 
-  打开系统里的所有文件，如果LOAD不是nil的话则加载进来。
+  打开系统里的所有文件，如果 LOAD 不是 nil 的话则加载进来。
 
 - M-x slime-browse-system NAME
 
-  使用Dired浏览系统里的所有文件。
+  使用 Dired 浏览系统里的所有文件。
 
-该扩展包也加载了一些新的REPL快捷命令（见 8.2.3 快捷命令）；
+该扩展包也加载了一些新的 REPL 快捷命令（见 8.2.3 快捷命令）；
 
 - load-system
 
-  编译（根据需要）并加载一个ASDF系统
+  编译（根据需要）并加载一个 ASDF 系统
 
 - compile-system
 
-  编译（但不加载）一个ASDF系统
+  编译（但不加载）一个 ASDF 系统
 
 - force-compile-system
 
-  重新编译（但不加载）一个ASDF系统
+  重新编译（但不加载）一个 ASDF 系统
 
 - force-load-system
 
-  重新编译并加载一个ASDF系统
+  重新编译并加载一个 ASDF 系统
 
 - open-system
 
@@ -1569,31 +1569,31 @@ ASDF是一个流行的“系统构建工具”。slime-asdf扩展包提供了一
 
 - browse-system
 
-  使用Dired打开系统里的所有文件
+  使用 Dired 打开系统里的所有文件
 
 ## 8.9 导航条
 
-slime-banner扩展包在当前REPL缓冲区安装一个位于窗口顶端的横条。开始的时候还会播放一段动画。
+slime-banner 扩展包在当前 REPL 缓冲区安装一个位于窗口顶端的横条。开始的时候还会播放一段动画。
 
-通过将slime-startup-animation设置为nil，你可以关闭动画，而slime-header-line-p可以设置横条。
+通过将 slime-startup-animation 设置为 nil，你可以关闭动画，而 slime-header-line-p 可以设置横条。
 
 ## 8.10 编辑命令
 
-slime-editing-commands扩展包提供了一些命令来编辑Lisp表达式。
+slime-editing-commands 扩展包提供了一些命令来编辑 Lisp 表达式。
 
 - C-c M-q 或 M-x slime-reindent-defun
 
-  重新缩进当前的defun，或者重排当前段落。如果光标在一段注释里，那么光标附近的文本会被当做一个段落，然后用fill-paragraph重排。否则，它会被当做Lisp代码，当前defun会被重新缩进。如果当前defun有没匹配的括号，在重新缩进前会尝试修复。
+  重新缩进当前的 defun，或者重排当前段落。如果光标在一段注释里，那么光标附近的文本会被当做一个段落，然后用 fill-paragraph 重排。否则，它会被当做 Lisp 代码，当前 defun 会被重新缩进。如果当前 defun 有没匹配的括号，在重新缩进前会尝试修复。
 
 - C-c C-] 或 M-x slime-close-all-parens-in-sexp
 
-  补全当前光标处未闭合的S表达式的括号。插入足够多的右括号，使得跟它的左括号数量匹配。删除多余的左括号，将结尾处的括号格式化为Lisp形式。
+  补全当前光标处未闭合的 S 表达式的括号。插入足够多的右括号，使得跟它的左括号数量匹配。删除多余的左括号，将结尾处的括号格式化为 Lisp 形式。
 
-  如果REGION是true，对该区域操作。否则对顶层环境光标前的表达式操作。
+  如果 REGION 是 true，对该区域操作。否则对顶层环境光标前的表达式操作。
 
 - M-x slime-insert-balanced-comments
 
-  在包含光标的表达式里插入对称的注释。如果该命令被重复调用（多次调用之间没有其它命令了），注释逐渐从里面的表达式向外扩展。如果调用的时候有前缀参数，S表达式的参数列表会有一个对称的注释。
+  在包含光标的表达式里插入对称的注释。如果该命令被重复调用（多次调用之间没有其它命令了），注释逐渐从里面的表达式向外扩展。如果调用的时候有前缀参数，S 表达式的参数列表会有一个对称的注释。
 
 - M-C-a 或 M-x slime-beginning-of-defun
 
@@ -1601,15 +1601,15 @@ slime-editing-commands扩展包提供了一些命令来编辑Lisp表达式。
 
 ## 8.11 更好的检查器
 
-有一个默认检查器的替代物，由 slime-fancy-inspector 扩展包提供。该检查器更加了解CLOS对象和方法。它提供很多用来使Lisp代码检查对象的行为。例如，为了展示一个泛函数，检查器会以纯文本的形式显示其文档，而对于每个方法则会列出它的超链接和一个你可以调用的“除去该方法”行为。它的键绑定跟默认检查器是一样的。
+有一个默认检查器的替代物，由 slime-fancy-inspector 扩展包提供。该检查器更加了解 CLOS 对象和方法。它提供很多用来使 Lisp 代码检查对象的行为。例如，为了展示一个泛函数，检查器会以纯文本的形式显示其文档，而对于每个方法则会列出它的超链接和一个你可以调用的“除去该方法”行为。它的键绑定跟默认检查器是一样的。
 
 ## 8.12 对象描述
 
-在Slime里，一个“对象描述” [[2]](#2-1)指的是跟一个 Lisp 对象有关的一块文本。右键点击文本会弹出操作该对象的一个菜单。有些操作，例如查看，对所有对象都适用，但对象也可以有自己特有的操作。例如，路径对象有Dired相关的操作。
+在 Slime 里，一个“对象描述” [[2]](#2-1) 指的是跟一个 Lisp 对象有关的一块文本。右键点击文本会弹出操作该对象的一个菜单。有些操作，例如查看，对所有对象都适用，但对象也可以有自己特有的操作。例如，路径对象有 Dired 相关的操作。
 
-更加重要的是，可以使用所有标准的 Emacs 命令来剪切和粘贴这些描述（也就是Lisp对象，而不仅仅是打印出来的样子）。通过这种方式，可以剪切和粘贴 REPL 里之前计算出来的结果。这对不可读对象来说十分重要。
+更加重要的是，可以使用所有标准的 Emacs 命令来剪切和粘贴这些描述（也就是 Lisp 对象，而不仅仅是打印出来的样子）。通过这种方式，可以剪切和粘贴 REPL 里之前计算出来的结果。这对不可读对象来说十分重要。
 
-slime-presentations 扩展包在 REPL 里安装这种对象描述，也就是求值命令的结果会被显示出来。使用这种方法，相关描述会生成标准Common Lisp REPL历史变量 `*`，`**`，`***` 的用法。例如：
+slime-presentations 扩展包在 REPL 里安装这种对象描述，也就是求值命令的结果会被显示出来。使用这种方法，相关描述会生成标准 Common Lisp REPL 历史变量 `*`，`**`，`***` 的用法。例如：
 
 ```sh
   CL-USER> (find-class 'standard-class)
@@ -1624,11 +1624,11 @@ slime-presentations 扩展包在 REPL 里安装这种对象描述，也就是求
   T
 ```
 
-当你复制了一个不完整的描述，或者编辑描述里的文本，该描述会变为纯文本，丢失与Lisp对象之间的关联。在缓冲区里，这会通过其颜色从红色变回黑色来表示，而且不能撤销。
+当你复制了一个不完整的描述，或者编辑描述里的文本，该描述会变为纯文本，丢失与 Lisp 对象之间的关联。在缓冲区里，这会通过其颜色从红色变回黑色来表示，而且不能撤销。
 
-对象描述也可以在查看器（所有可以查看的部分都是对象描述）和调试器（所有的本地变量都是对象描述）里使用。这样就可以使用出现在调试窗口里的对象来在REPL里求值。这比使用M-x sldb-eval-in-frame更加方便。警告：从查看器和调试器而来的对象只在相关窗口打开的时候才是可用的。否则的话会引起错误或者混淆。
+对象描述也可以在查看器（所有可以查看的部分都是对象描述）和调试器（所有的本地变量都是对象描述）里使用。这样就可以使用出现在调试窗口里的对象来在 REPL 里求值。这比使用 M-x sldb-eval-in-frame 更加方便。警告：从查看器和调试器而来的对象只在相关窗口打开的时候才是可用的。否则的话会引起错误或者混淆。
 
-对于某些Lisp实现，你还可以安装slime-presentation-streams包，它让对象描述适用于*standard-output*流和其它流。这意味着不只是计算的结果，而是某些对象都可以通过与对象描述相关联来打印到标准输出（作为计算的副作用）。目前所有的不可读对象和路径都被作为对象描述打印出来。
+对于某些 Lisp 实现，你还可以安装 slime-presentation-streams 包，它让对象描述适用于 *standard-output* 流和其它流。这意味着不只是计算的结果，而是某些对象都可以通过与对象描述相关联来打印到标准输出（作为计算的副作用）。目前所有的不可读对象和路径都被作为对象描述打印出来。
 
 ```sh
   CL-USER> (describe (find-class 'standard-object))
@@ -1644,7 +1644,7 @@ slime-presentations 扩展包在 REPL 里安装这种对象描述，也就是求
 
 这也使得可以复制粘贴、查看这些对象。
 
-除了标准Emacs命令，还有一些键盘命令，一个menu-bar菜单，一个上下文菜单来操作对象描述。我们在下面解释了这些键盘命令，它们也可以通过menu-bar访问。
+除了标准 Emacs 命令，还有一些键盘命令，一个 menu-bar 菜单，一个上下文菜单来操作对象描述。我们在下面解释了这些键盘命令，它们也可以通过 menu-bar 访问。
 
 - C-c C-v SPC 或 M-x slime-mark-presentation
 
@@ -1652,11 +1652,11 @@ slime-presentations 扩展包在 REPL 里安装这种对象描述，也就是求
 
 - C-c C-v w 或 M-x slime-copy-presentation-at-point-to-kill-ring
 
-  如果光标在描述内，将该描述复制到kill ring里。
+  如果光标在描述内，将该描述复制到 kill ring 里。
 
 - C-c C-v r 或 M-x slime-copy-presentation-at-point-to-repl
 
-  如果光标在描述内，将该描述复制到REPL里。
+  如果光标在描述内，将该描述复制到 REPL 里。
 
 - C-c C-v d 或 M-x slime-describe-presentation-at-point
 
@@ -1664,7 +1664,7 @@ slime-presentations 扩展包在 REPL 里安装这种对象描述，也就是求
 
 - C-c C-v i 或 M-x slime-inspect-presentation-at-point
 
-  如果光标在描述内，在Slime查看器里查看该对象。
+  如果光标在描述内，在 Slime 查看器里查看该对象。
 
 - C-c C-v n 或 M-x slime-next-presentation
 
@@ -1674,9 +1674,9 @@ slime-presentations 扩展包在 REPL 里安装这种对象描述，也就是求
 
   将光标移到缓冲区里的上一个描述处。
 
-相关的操作也可以在每一个描述的上下文菜单里找到。在一个描述处单击mouse-3打开上下文菜单会，会显示可用的命令。对于某些对象，某些特别的命令也是可用的。用户可以通过给swank::menu-choices-for-presentation定义方法来定义特殊的命令。
+相关的操作也可以在每一个描述的上下文菜单里找到。在一个描述处单击 mouse-3 打开上下文菜单会，会显示可用的命令。对于某些对象，某些特别的命令也是可用的。用户可以通过给 swank::menu-choices-for-presentation 定义方法来定义特殊的命令。
 
-警告：对于没有弱哈希表的Lisp实现，所有跟对象描述相关联的对象都被垃圾回收保护起来。如果你的Lisp进程因此变得太大，使用C-c C-v M-o（slime-clear-presentations）断开这些关联，这会清空REPL缓冲区，并且断开所有对象描述的关联。
+警告：对于没有弱哈希表的 Lisp 实现，所有跟对象描述相关联的对象都被垃圾回收保护起来。如果你的 Lisp 进程因此变得太大，使用 C-c C-v M-o（slime-clear-presentations）断开这些关联，这会清空 REPL 缓冲区，并且断开所有对象描述的关联。
 
 警告：对象描述可能让新用户迷惑。
 
@@ -1687,11 +1687,11 @@ slime-presentations 扩展包在 REPL 里安装这种对象描述，也就是求
   T
 ```
 
-可能有人会期望结果是nil，因为这看起来像是两个新创建的cons在相互比较，而忽视了它们的对象身份。但是在上例中，对象描述(1 . 2)是被两次复制到REPL里的，所以eq确实是作用在相同的对象上的，也就是之前输入到REPL里的cons对象。
+可能有人会期望结果是 nil，因为这看起来像是两个新创建的 cons 在相互比较，而忽视了它们的对象身份。但是在上例中，对象描述 (1 . 2) 是被两次复制到 REPL 里的，所以 eq 确实是作用在相同的对象上的，也就是之前输入到 REPL 里的 cons 对象。
 
 ## 8.13 打印窗口
 
-打印窗口是一个特殊的Emacs窗口，用来代替显示区域（mini缓冲区）来显示Slime命令的信息。这是一个可选的特性。跟显示区域相比，打印窗口的优势是可以显示更多的文本，可以被滚动，而且当你按键时内容不会消失。所有可能的较长的信息都会被发送到打印窗口，例如参数列表、宏展开等等。
+打印窗口是一个特殊的 Emacs 窗口，用来代替显示区域（mini 缓冲区）来显示 Slime 命令的信息。这是一个可选的特性。跟显示区域相比，打印窗口的优势是可以显示更多的文本，可以被滚动，而且当你按键时内容不会消失。所有可能的较长的信息都会被发送到打印窗口，例如参数列表、宏展开等等。
 
 - M-x slime-ensure-typeout-frame
 
@@ -1699,21 +1699,21 @@ slime-presentations 扩展包在 REPL 里安装这种对象描述，也就是求
 
 如果打印窗口关闭那么会重新使用显示区域。
 
-如果要在启动时自动创建一个打印窗口，需要加载slime-typeout-frame扩展包。（见 8.1 加载扩展包）
+如果要在启动时自动创建一个打印窗口，需要加载 slime-typeout-frame 扩展包。（见 8.1 加载扩展包）
 
-slime-typeout-frame-properties变量指定了打印窗口的长度和其它可能的特性。它的值会传给make-frame。
+slime-typeout-frame-properties 变量指定了打印窗口的长度和其它可能的特性。它的值会传给 make-frame。
 
 ## 8.14 TRAMP
 
-slime-tramp扩展包提供了一些为TRAMP进行文件名转换的函数。（见 7.1.3 设置路径名翻译）
+slime-tramp 扩展包提供了一些为 TRAMP 进行文件名转换的函数。（见 7.1.3 设置路径名翻译）
 
 ## 8.15 文档链接
 
-对于某些错误信息，SBCL包含了ANSI标准或者SBCL用户手册相关的参考。slime-references扩展包将这些参考变为可以点击的链接。这使得在HyperSpec里找到这些参考相关的章节更加容易。
+对于某些错误信息，SBCL 包含了 ANSI 标准或者 SBCL 用户手册相关的参考。slime-references 扩展包将这些参考变为可以点击的链接。这使得在 HyperSpec 里找到这些参考相关的章节更加容易。
 
 ## 8.16 交叉引用和类查看器
 
-slime-xref-browser扩展包提供了一个基础的类查看器。
+slime-xref-browser 扩展包提供了一个基础的类查看器。
 
 - M-x slime-browse-classes
 
@@ -1725,15 +1725,15 @@ slime-xref-browser扩展包提供了一个基础的类查看器。
 
 ## 8.17 高亮编辑
 
-slime-highlight-edits是一个用来高亮显示Lisp源代码里被修改了的部分的minor模式。这对于快速找到那些需要重新编译（用C-c C-c）的函数十分有用。
+slime-highlight-edits 是一个用来高亮显示 Lisp 源代码里被修改了的部分的 minor 模式。这对于快速找到那些需要重新编译（用 C-c C-c）的函数十分有用。
 
 - M-x slime-highlight-edits-mode
 
-  打开或关闭slime-highlight-edits-mode
+  打开或关闭 slime-highlight-edits-mode
 
 ## 8.18 空白缓冲区
 
-由slime-scratch扩展包提供的Slime的空白缓冲区，模仿Emacs的*scratch*缓冲区。如果slime-scratch-file被设置，它被用来备份空白缓冲区，使其变得可持久。它跟其它的Lisp缓冲区是一样的，除了绑定到C-j的命令。
+由 slime-scratch 扩展包提供的 Slime 的空白缓冲区，模仿 Emacs 的 *scratch* 缓冲区。如果 slime-scratch-file 被设置，它被用来备份空白缓冲区，使其变得可持久。它跟其它的 Lisp 缓冲区是一样的，除了绑定到 C-j 的命令。
 
 - C-j 或 M-x slime-eval-print-last-expression
 
@@ -1741,13 +1741,13 @@ slime-highlight-edits是一个用来高亮显示Lisp源代码里被修改了的�
 
 - M-x slime-scratch
 
-  创建一个*slime-scratch*缓冲区。在此缓冲区里你可以输入Lisp表达式并用C-j来求值，类似于Emacs的*scratch*缓冲区。
+  创建一个 *slime-scratch* 缓冲区。在此缓冲区里你可以输入 Lisp 表达式并用 C-j 来求值，类似于 Emacs 的 *scratch* 缓冲区。
 
 ## 8.19 slime-sprof
 
-slime-sprof扩展包用来集成SBCL的静态分析器，sb-sprof。
+slime-sprof 扩展包用来集成 SBCL 的静态分析器，sb-sprof。
 
-slime-sprof-exclude-swank变量控制是否显示swank函数，默认值是nil。
+slime-sprof-exclude-swank 变量控制是否显示 swank 函数，默认值是 nil。
 
 - M-x slime-sprof-start
 
@@ -1761,7 +1761,7 @@ slime-sprof-exclude-swank变量控制是否显示swank函数，默认值是nil�
 
   报告分析结果
 
-下面的命令在slime-sprof-browser模式里定义：
+下面的命令在 slime-sprof-browser 模式里定义：
 
 - RET 或 M-x slime-sprof-browser-toggle
 
@@ -1781,17 +1781,17 @@ slime-sprof-exclude-swank变量控制是否显示swank函数，默认值是nil�
 
 ## 8.20 元包 slime-fancy
 
-slime-fancy包是一个用来加载那些最受欢迎的包的元包。
+slime-fancy 包是一个用来加载那些最受欢迎的包的元包。
 
 ## 脚注
 
 ### [1]
 
-这种类型的补全由 Chris McConnell在 completer.el 里被构建。该包跟 ILISP 绑定在一起。
+这种类型的补全由 Chris McConnell 在 completer.el 里被构建。该包跟 ILISP 绑定在一起。
 
 ### [2]
 
-对象描述是来自于 Lisp 机的特性。可以通过定义present方法来适用于不同的设备，例如将对象绘到位图显示屏或者将文本写到字符流。
+对象描述是来自于 Lisp 机的特性。可以通过定义 present 方法来适用于不同的设备，例如将对象绘到位图显示屏或者将文本写到字符流。
 
 # 九、致谢
 
@@ -1851,8 +1851,8 @@ Slime 是由 Eric Marsden 写的 Slim 的扩展版。在撰写的时候，Slime 
 
 ## 多谢
 
-我们十分感谢 common-lisp.net 的人帮我们提供空间以及其它帮助，以及从“Sourceforge地狱”里拯救我们。
+我们十分感谢 common-lisp.net 的人帮我们提供空间以及其它帮助，以及从“Sourceforge 地狱”里拯救我们。
 
-我们支持的Lisp实现者都很有帮助。我们要感谢 CMUCL 维护者的很有帮助的回答，Franz 的 Craig Norvell 和 Kevin Layer 为 Slime 的开发提供了 Allegro CL 协议，Peter Graves 使 Slime 能跑在 ABCL上。
+我们支持的 Lisp 实现者都很有帮助。我们要感谢 CMUCL 维护者的很有帮助的回答，Franz 的 Craig Norvell 和 Kevin Layer 为 Slime 的开发提供了 Allegro CL 协议，Peter Graves 使 Slime 能跑在 ABCL 上。
 
-对于加入到 Slime 开发里的 Lisp 实现者们，我们表示很高兴跟他们一起工作：Dan Barlow and Christophe Rhodes of SBCL, Gary Byers of OpenMCL, and Martin Simmons of LispWorks.同时感谢 Alain Picard 以及 Memetrics 赞助 Martin LispWorks 后台的初期工作！
+对于加入到 Slime 开发里的 Lisp 实现者们，我们表示很高兴跟他们一起工作：Dan Barlow and Christophe Rhodes of SBCL, Gary Byers of OpenMCL, and Martin Simmons of LispWorks. 同时感谢 Alain Picard 以及 Memetrics 赞助 Martin LispWorks 后台的初期工作！
