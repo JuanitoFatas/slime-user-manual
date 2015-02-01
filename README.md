@@ -1123,19 +1123,19 @@ Slime 的 Lisp 服务器端（也叫做“Swank”），提供几个变量可供
 如果你不想通过一般的基于 Emacs 的方式加载 swank，只需要加载 swank-load.lisp 文件就可以了。只需要在一个运行中的 Lisp 镜像 [[1]](#1) 里执行以下代码：
 
 ```emacs-lisp
-  (load "/path/to/swank-loader.lisp")
+(load "/path/to/swank-loader.lisp")
 ```
 
 现在，我们需要做的就是启动 swank 服务器。在第一个例子里，我们假设使用默认配置。
 
 ```emacs-lisp
-  (swank:create-server)
+(swank:create-server)
 ```
 
 由于我们将要使用 ssh[[2]](#2) 来建立链接并且只打开了一个端口，我们不希望 swank 使用另一个端口作为输出（目前这在 swank 里是默认的）：
 
 ```emacs-lisp
-  (setf swank:*use-dedicated-output-stream* nil)
+(setf swank:*use-dedicated-output-stream* nil)
 ```
 
 如果你有其它特别的需求（例如在结束后重新连接到 swank），请查看 swank:create-server 的其它参数。其中的一些参数如下：
@@ -1159,14 +1159,14 @@ Slime 的 Lisp 服务器端（也叫做“Swank”），提供几个变量可供
 更加完整的实例如下：
 
 ```emacs-lisp
-  (swank:create-server :port 4005  :dont-close t :coding-system "utf-8-unix")
+(swank:create-server :port 4005  :dont-close t :coding-system "utf-8-unix")
 ```
 
 在 Emacs 端，你会进行类似如下的设置来连接到同一台机器上的 Lisp 镜像：
 
 ```emacs-lisp
-  (setq slime-net-coding-system 'utf-8-unix)
-  (slime-connect "127.0.0.1" 4005)
+(setq slime-net-coding-system 'utf-8-unix)
+(slime-connect "127.0.0.1" 4005)
 ```
 
 ### 7.1.2 设置 Emacs
@@ -1174,7 +1174,7 @@ Slime 的 Lisp 服务器端（也叫做“Swank”），提供几个变量可供
 现在我们需要在本地机器和远程机器之间建立连接。
 
 ```sh
-  ssh -L4005:127.0.0.1:4005 username@remote.example.com
+ssh -N -f -L 4005:127.0.0.1:4005 username@remote.example.com
 ```
 
 这里调用的 ssh 在本地机器的 4005 端口和远程机器的 4005 端口上建立了一个 ssh 连接 [[3]](#3)。
@@ -1182,7 +1182,7 @@ Slime 的 Lisp 服务器端（也叫做“Swank”），提供几个变量可供
 最后，我们启动 Slime：
 
 ```emacs-lisp
-  M-x slime-connect RET RET
+M-x slime-connect RET RET
 ```
 
 RET RET 按键表示我们要使用默认主机（127.0.0.1）和默认端口（4005）。虽然我们是连接到远程机器上的，ssh 连接让 Emacs 以为我们是在本地操作。
@@ -1196,10 +1196,10 @@ RET RET 按键表示我们要使用默认主机（127.0.0.1）和默认端口（
 我们需要做的事情是让 Emacs 接收一个远程机器上的文件名，然后将其翻译为某种 tramp 可以理解和使用的格式，反之亦然。假设远程机器的主机名叫做 remote.example.com，cl:machine-instance 返回“remote”，我们以“user”用户登陆，我们使用 slime-tramp 扩展包来设置适当的翻译方式，如下：
 
 ```emacs-lisp
-  (push (slime-create-filename-translator :machine-instance "remote.example.com"
-                                          :remote-host "remote"
-                                          :username "user")
-        slime-filename-translations)
+(push (slime-create-filename-translator :machine-instance "remote.example.com"
+                                        :remote-host "remote"
+                                        :username "user")
+      slime-filename-translations)
 ```
 
 ## 7.2 重定向全局 IO 到 REPL
@@ -1207,9 +1207,9 @@ RET RET 按键表示我们要使用默认主机（127.0.0.1）和默认端口（
 默认情况下 Slime 并不会改变 *standard-output* 和 REPL 以外的其它事物。如果你有一些其它的线程，例如 format，write-string 等等，相应的输出仅仅能在 *inferior-lisp* 缓冲区或者是终端下看到，通常来说这很不方便。所以如果你有这样的代码：
 
 ```emacs-lisp
-  (run-in-new-thread
-   (lambda ()
-     (write-line "In some random thread.~%" *standard-output*)))
+(run-in-new-thread
+ (lambda ()
+   (write-line "In some random thread.~%" *standard-output*)))
 ```
 
 并且想让它输出到 Slime 的 REPL 缓冲区而不是 *inferior-lisp* 缓冲区，只需要将 swank:*globally-redirect-io* 设置为 T。
@@ -1221,10 +1221,10 @@ RET RET 按键表示我们要使用默认主机（127.0.0.1）和默认端口（
 如果想要在打开一个 Lisp 文件的时候自动启动 Slime，将以下设置加入~/.emacs 文件里：
 
 ```emacs-lisp
-  (add-hook 'slime-mode-hook
-            (lambda ()
-              (unless (slime-connected-p)
-                (save-excursion (slime)))))
+(add-hook 'slime-mode-hook
+          (lambda ()
+            (unless (slime-connected-p)
+              (save-excursion (slime)))))
 ```
 
 ## 7. 脚注
@@ -1251,10 +1251,10 @@ Slime 也提供了一个功能相同的 ASDF 系统定义
 默认情况下扩展包并没有被加载。你必须稍微设置一下，这样 Emacs 就可以知道在哪里找到这些扩展包、加载哪些扩展包。总的来说，你应该调用 slime-setup 函数，并将需要用的包的名字作为一个列表传给它。例如，加载 slime-scratch 和 slime-editing-commands 包的设置如下：
 
 ```emacs-lisp
-  (setq inferior-lisp-program "/opt/sbcl/bin/sbcl") ; your Lisp system
-  (add-to-list 'load-path "~/hacking/lisp/slime/")  ; your SLIME directory
-  (require 'slime-autoloads)
-  (slime-setup '(slime-scratch slime-editing-commands))
+(setq inferior-lisp-program "/opt/sbcl/bin/sbcl") ; your Lisp system
+(add-to-list 'load-path "~/hacking/lisp/slime/")  ; your SLIME directory
+(require 'slime-autoloads)
+(slime-setup '(slime-scratch slime-editing-commands))
 ```
 
 启动 Slime 后，这些扩展包的命令应该都可用了。
@@ -1262,13 +1262,13 @@ Slime 也提供了一个功能相同的 ASDF 系统定义
 这里要特别提到 REPL 和 slime-fancy 扩展包。许多用户认为 REPL（见 8.2 REPL）很必要，而 slime-fancy（见 8.20 slime-fancy）加载了 REPL 包和其它几乎所有常用的包。所以，如果你不知道怎样启动，试试：
 
 ```emacs-lisp
-  (slime-setup '(slime-repl)) ; repl only
+(slime-setup '(slime-repl)) ; repl only
 ```
 
 如果你喜欢你见到的，试试：
 
 ```emacs-lisp
-  (slime-setup '(slime-fancy)) ; almost everything
+(slime-setup '(slime-fancy)) ; almost everything
 ```
 
 ## 8.2 REPL：“顶层环境”
@@ -1446,21 +1446,21 @@ slime-c-p-c-unambiguous-prefix-p 变量定义了在补全符号后光标应该�
 除此之外，slime-c-p-c 也为字符名提供补全（对很多可以识别 Unicode 的 Lisp 实现来讲通常很有用）：
 
 ```sh
-  CL-USER> #\Sp<TAB>
+CL-USER> #\Sp<TAB>
 ```
 
-在这里 Slime 会将其补全为#\Space，但在一个可以识别 Unicode 的实现里，就可能会有以下的补全：
+在这里 Slime 会将其补全为 `#\Space`，但在一个可以识别 Unicode 的实现里，就可能会有以下的补全：
 
-```sh
-  Space                              Space
-  Sparkle                            Spherical_Angle
-  Spherical_Angle_Opening_Left       Spherical_Angle_Opening_Up
+```
+Space                              Space
+Sparkle                            Spherical_Angle
+Spherical_Angle_Opening_Left       Spherical_Angle_Opening_Up
 ```
 
 slime-c-p-c 扩展包也提供了对关键字的大小写敏感的补全。例如：
 
-```sh
-  CL-USER> (find 1 '(1 2 3) :s<TAB>
+```
+CL-USER> (find 1 '(1 2 3) :s<TAB>
 ```
 
 在这里 Slime 会补全为:start，而不是将所有以:s 开头的关键字列出来。
@@ -1470,23 +1470,23 @@ slime-c-p-c 扩展包也提供了对关键字的大小写敏感的补全。例�
 如果有的话，将当前光标处的函数的参数列表列出来并插入缓冲区。更加一般地，此命令给不完全的形式的缺失参数提供了一个模板。对于发现泛函数的额外参数，处理 make-instance、defmethod 和其它很多函数来说有特殊的代码，例如：
 
 ```emacs-lisp
-  (subseq "abc" <C-c C-s>
-           --inserts--> start [end])
-  (find 17 <C-c C-s>
-           --inserts--> sequence :from-end from-end :test test
-           :test-not test-not :start start :end end
-           :key key)
-   (find 17 '(17 18 19) :test #'= <C-c C-s>
-            --inserts--> :from-end from-end
-            :test-not test-not :start start :end end
-            :key key)
-   (defclass foo () ((bar :initarg :bar)))
-   (defmethod print-object <C-c C-s>
-              --inserts-->   (object stream)
-              body...)
-   (defmethod initialize-instance :after ((object foo) &key blub))
-   (make-instance 'foo <C-c C-s>
-                   --inserts--> :bar bar :blub blub initargs...)
+(subseq "abc" <C-c C-s>
+         --inserts--> start [end])
+(find 17 <C-c C-s>
+         --inserts--> sequence :from-end from-end :test test
+         :test-not test-not :start start :end end
+         :key key)
+ (find 17 '(17 18 19) :test #'= <C-c C-s>
+          --inserts--> :from-end from-end
+          :test-not test-not :start start :end end
+          :key key)
+ (defclass foo () ((bar :initarg :bar)))
+ (defmethod print-object <C-c C-s>
+            --inserts-->   (object stream)
+            body...)
+ (defmethod initialize-instance :after ((object foo) &key blub))
+ (make-instance 'foo <C-c C-s>
+                 --inserts--> :bar bar :blub blub initargs...)
 ```
 
 ## 8.6 模糊补全
@@ -1495,11 +1495,11 @@ slime-fuzzy 扩展包提供了另一种符号补全方式。
 
 [最好有人描述一下这种算法到底是做什么的]
 
-它尝试一次性补全整个符号，而不是只补全一部分。例如，“mvb”会补全为“multiple-value-bind”，“norm-df”会补全为“least-positive-normalized-double-float”。
+它尝试一次性补全整个符号，而不是只补全一部分。例如，“mvb” 会补全为 “multiple-value-bind”，“norm-df”会补全为 “least-positive-normalized-double-float”。
 
 这种算法尝试以不同的方式扩展每一个字符，然后以下列的方式将所有可能的补全排序列出。
 
-根据在字符串里的位置，字母会被赋予一个权值。字符串最开头，或者是前缀字母之后的字母的权值是最高的。分隔符之后的字符，例如#\-，权值是次高的。字符串最后或者是后缀字母之前的字母有中等权值，其它地方的字母的权值最低。
+根据在字符串里的位置，字母会被赋予一个权值。字符串最开头，或者是前缀字母之后的字母的权值是最高的。分隔符之后的字符，例如 `#\-`，权值是次高的。字符串最后或者是后缀字母之前的字母有中等权值，其它地方的字母的权值最低。
 
 如果一个字母在另一个匹配字母之后，它在此处的可能性就比之前字母的可能性低，所以就会使用之前的可能性。
 
@@ -1516,7 +1516,7 @@ Autodoc 模式是一个用来自动显示光标附近符号的相关信息的 mi
 该模式可以通过你~/.emacs 文件里的 slime-setup 调用来默认开启：
 
 ```emacs-lisp
-  (slime-setup '(slime-autodoc))
+(slime-setup '(slime-autodoc))
 ```
 
 - M-x slime-arglist NAME
@@ -1611,17 +1611,17 @@ slime-editing-commands 扩展包提供了一些命令来编辑 Lisp 表达式。
 
 slime-presentations 扩展包在 REPL 里安装这种对象描述，也就是求值命令的结果会被显示出来。使用这种方法，相关描述会生成标准 Common Lisp REPL 历史变量 `*`，`**`，`***` 的用法。例如：
 
-```sh
-  CL-USER> (find-class 'standard-class)
-  #<STANDARD-CLASS STANDARD-CLASS>
-  CL-USER>
+```
+CL-USER> (find-class 'standard-class)
+#<STANDARD-CLASS STANDARD-CLASS>
+CL-USER>
 ```
 
 在缓冲区里描述会以红色显示。使用标准的 Emacs 命令，描述可以被复制进 REPL 内的一个新的输入里：
 
-```sh
-  CL-USER> (eql '#<STANDARD-CLASS STANDARD-CLASS> '#<STANDARD-CLASS STANDARD-CLASS>)
-  T
+```
+CL-USER> (eql '#<STANDARD-CLASS STANDARD-CLASS> '#<STANDARD-CLASS STANDARD-CLASS>)
+T
 ```
 
 当你复制了一个不完整的描述，或者编辑描述里的文本，该描述会变为纯文本，丢失与 Lisp 对象之间的关联。在缓冲区里，这会通过其颜色从红色变回黑色来表示，而且不能撤销。
@@ -1631,15 +1631,15 @@ slime-presentations 扩展包在 REPL 里安装这种对象描述，也就是求
 对于某些 Lisp 实现，你还可以安装 slime-presentation-streams 包，它让对象描述适用于 *standard-output* 流和其它流。这意味着不只是计算的结果，而是某些对象都可以通过与对象描述相关联来打印到标准输出（作为计算的副作用）。目前所有的不可读对象和路径都被作为对象描述打印出来。
 
 ```sh
-  CL-USER> (describe (find-class 'standard-object))
-  #<STANDARD-CLASS STANDARD-OBJECT> is an instance of
-      #<STANDARD-CLASS STANDARD-CLASS>:
-    The following slots have :INSTANCE allocation:
-      PLIST                   NIL
-      FLAGS                   1
-      DIRECT-METHODS          ((#<STANDARD-METHOD
-                                  SWANK::ALL-SLOTS-FOR-INSPECTOR
-                                  (STANDARD-OBJECT T)>
+CL-USER> (describe (find-class 'standard-object))
+#<STANDARD-CLASS STANDARD-OBJECT> is an instance of
+    #<STANDARD-CLASS STANDARD-CLASS>:
+  The following slots have :INSTANCE allocation:
+    PLIST                   NIL
+    FLAGS                   1
+    DIRECT-METHODS          ((#<STANDARD-METHOD
+                                SWANK::ALL-SLOTS-FOR-INSPECTOR
+                                (STANDARD-OBJECT T)>
 ```
 
 这也使得可以复制粘贴、查看这些对象。
@@ -1681,10 +1681,10 @@ slime-presentations 扩展包在 REPL 里安装这种对象描述，也就是求
 警告：对象描述可能让新用户迷惑。
 
 ```sh
-  CL-USER> (cons 1 2)
-  (1 . 2)
-  CL-USER> (eq '(1 . 2) '(1 . 2))
-  T
+CL-USER> (cons 1 2)
+(1 . 2)
+CL-USER> (eq '(1 . 2) '(1 . 2))
+T
 ```
 
 可能有人会期望结果是 nil，因为这看起来像是两个新创建的 cons 在相互比较，而忽视了它们的对象身份。但是在上例中，对象描述 (1 . 2) 是被两次复制到 REPL 里的，所以 eq 确实是作用在相同的对象上的，也就是之前输入到 REPL 里的 cons 对象。
